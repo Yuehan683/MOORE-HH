@@ -20,7 +20,7 @@ if not exist "%RESULTS_DIR%" (
 )
 
 python run_minigrid_ppo_st_gpu.py ^
---n_exp 1 ^
+--n_exp 5 ^
 --env_name %ENV_NAME% ^
 --exp_name ppo_st_baseline ^
 --results_dir "%RESULTS_DIR%" ^
