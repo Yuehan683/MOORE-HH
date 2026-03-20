@@ -1,0 +1,658 @@
+18/03/2026 17:05:07 [INFO] MiniGridPPOMixtureSHNetwork(
+  (_task_encoder): Linear(in_features=3, out_features=6, bias=False)
+  (orth_layer): OrthogonalLayer1D()
+  (cnn): Sequential(
+    (0): InputLayer()
+    (1): ParallelLayer(
+      (model_layers): ModuleList(
+        (0-5): 6 x Sequential(
+          (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+          (1): ReLU()
+          (2): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+          (3): ReLU()
+          (4): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+          (5): Flatten(start_dim=1, end_dim=-1)
+        )
+      )
+    )
+    (2): OrthogonalLayer1D()
+  )
+  (_output_head): Sequential(
+    (0): Linear(in_features=1027, out_features=128, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+18/03/2026 17:05:07 [INFO] MiniGridPPOMixtureSHNetwork(
+  (_task_encoder): Linear(in_features=3, out_features=6, bias=False)
+  (orth_layer): OrthogonalLayer1D()
+  (cnn): Sequential(
+    (0): InputLayer()
+    (1): ParallelLayer(
+      (model_layers): ModuleList(
+        (0-5): 6 x Sequential(
+          (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+          (1): ReLU()
+          (2): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+          (3): ReLU()
+          (4): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+          (5): Flatten(start_dim=1, end_dim=-1)
+        )
+      )
+    )
+    (2): OrthogonalLayer1D()
+  )
+  (_output_head): Sequential(
+    (0): Linear(in_features=1027, out_features=128, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=128, out_features=7, bias=True)
+  )
+)
+18/03/2026 17:05:07 [INFO] Policy use_cuda: True
+18/03/2026 17:05:07 [INFO] Actor device: cuda:0
+18/03/2026 17:05:07 [INFO] Critic device: cuda:0
+18/03/2026 17:05:09 [INFO] Epoch 0 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:05:34 [INFO] Epoch 0 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.8575 AverageReturn: 0.05359375 AverageDiscountedReturn: 0.01721437008995679
+18/03/2026 17:05:57 [INFO] Epoch 0 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9330578512396694 AverageReturn: 0.1237190082644628 AverageDiscountedReturn: 0.04068118611470238
+18/03/2026 17:06:44 [INFO] Epoch 1 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:07:03 [INFO] Epoch 1 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.8325 AverageReturn: 0.120234375 AverageDiscountedReturn: 0.019976942075455403
+18/03/2026 17:07:20 [INFO] Epoch 1 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9776859504132231 AverageReturn: 0.3023863636363636 AverageDiscountedReturn: 0.15188768760694207
+18/03/2026 17:07:21 [INFO] [Epoch 1] ActorGrad=0.060207, CriticGrad=0.008540, NaNInfTotal=0
+18/03/2026 17:07:21 [INFO] [Epoch 1] ActorOrthErrMean=3.450197e-07, ActorOrthErrP95=3.450197e-07
+18/03/2026 17:07:21 [INFO] [Epoch 1] CriticOrthErrMean=3.738870e-07, CriticOrthErrP95=5.484706e-07
+18/03/2026 17:08:08 [INFO] Epoch 2 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.5959183673469388 AverageReturn: 0.037244897959183676 AverageDiscountedReturn: 0.015535624609757697
+18/03/2026 17:08:26 [INFO] Epoch 2 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.7849999999999999 AverageReturn: 0.06898437499999999 AverageDiscountedReturn: 0.008881791234315557
+18/03/2026 17:08:39 [INFO] Epoch 2 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9806611570247934 AverageReturn: 0.1956301652892562 AverageDiscountedReturn: 0.09368581489674345
+18/03/2026 17:08:39 [INFO] [Epoch 2] ActorGrad=0.093439, CriticGrad=0.028685, NaNInfTotal=0
+18/03/2026 17:08:39 [INFO] [Epoch 2] ActorOrthErrMean=3.284065e-07, ActorOrthErrP95=3.284065e-07
+18/03/2026 17:08:39 [INFO] [Epoch 2] CriticOrthErrMean=3.711374e-07, CriticOrthErrP95=5.472260e-07
+18/03/2026 17:09:24 [INFO] Epoch 3 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:09:44 [INFO] Epoch 3 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.5425 AverageReturn: 0.09945312499999999 AverageDiscountedReturn: 0.0023110457980571758
+18/03/2026 17:09:55 [INFO] Epoch 3 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9657851239669422 AverageReturn: 0.28600206611570245 AverageDiscountedReturn: 0.17370629232038254
+18/03/2026 17:09:55 [INFO] [Epoch 3] ActorGrad=0.099614, CriticGrad=0.007554, NaNInfTotal=0
+18/03/2026 17:09:55 [INFO] [Epoch 3] ActorOrthErrMean=3.696937e-07, ActorOrthErrP95=3.696937e-07
+18/03/2026 17:09:55 [INFO] [Epoch 3] CriticOrthErrMean=3.904118e-07, CriticOrthErrP95=5.731181e-07
+18/03/2026 17:10:42 [INFO] Epoch 4 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:11:02 [INFO] Epoch 4 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:11:20 [INFO] Epoch 4 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9360330578512397 AverageReturn: 0.1678099173553719 AverageDiscountedReturn: 0.050691052618782234
+18/03/2026 17:11:20 [INFO] [Epoch 4] ActorGrad=0.092562, CriticGrad=0.017372, NaNInfTotal=0
+18/03/2026 17:11:20 [INFO] [Epoch 4] ActorOrthErrMean=3.220098e-07, ActorOrthErrP95=3.220098e-07
+18/03/2026 17:11:20 [INFO] [Epoch 4] CriticOrthErrMean=3.763021e-07, CriticOrthErrP95=5.608363e-07
+18/03/2026 17:12:08 [INFO] Epoch 5 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:12:35 [INFO] Epoch 5 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.43999999999999995 AverageReturn: 0.027499999999999997 AverageDiscountedReturn: 0.0003077972100317961
+18/03/2026 17:12:51 [INFO] Epoch 5 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.22015495867768597 AverageDiscountedReturn: 0.12963027888887968
+18/03/2026 17:12:51 [INFO] [Epoch 5] ActorGrad=0.104566, CriticGrad=0.020586, NaNInfTotal=0
+18/03/2026 17:12:51 [INFO] [Epoch 5] ActorOrthErrMean=3.352491e-07, ActorOrthErrP95=3.352491e-07
+18/03/2026 17:12:51 [INFO] [Epoch 5] CriticOrthErrMean=3.866042e-07, CriticOrthErrP95=5.811834e-07
+18/03/2026 17:13:36 [INFO] Epoch 6 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:13:57 [INFO] Epoch 6 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.29874999999999996 AverageReturn: 0.018671874999999998 AverageDiscountedReturn: 6.712694861321475e-05
+18/03/2026 17:14:10 [INFO] Epoch 6 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.988099173553719 AverageReturn: 0.3547520661157025 AverageDiscountedReturn: 0.23538183437017818
+18/03/2026 17:14:10 [INFO] [Epoch 6] ActorGrad=0.113881, CriticGrad=0.009978, NaNInfTotal=0
+18/03/2026 17:14:10 [INFO] [Epoch 6] ActorOrthErrMean=4.211745e-07, ActorOrthErrP95=4.211745e-07
+18/03/2026 17:14:10 [INFO] [Epoch 6] CriticOrthErrMean=3.734419e-07, CriticOrthErrP95=5.249883e-07
+18/03/2026 17:14:57 [INFO] Epoch 7 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.6005102040816326 AverageReturn: 0.04923469387755102 AverageDiscountedReturn: 0.017809118195556126
+18/03/2026 17:15:21 [INFO] Epoch 7 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.7324999999999999 AverageReturn: 0.086796875 AverageDiscountedReturn: 0.005582838015572322
+18/03/2026 17:15:33 [INFO] Epoch 7 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9836363636363636 AverageReturn: 0.2678202479338843 AverageDiscountedReturn: 0.15405096242628746
+18/03/2026 17:15:33 [INFO] [Epoch 7] ActorGrad=0.136585, CriticGrad=0.037491, NaNInfTotal=0
+18/03/2026 17:15:33 [INFO] [Epoch 7] ActorOrthErrMean=4.514855e-07, ActorOrthErrP95=4.514855e-07
+18/03/2026 17:15:33 [INFO] [Epoch 7] CriticOrthErrMean=3.845564e-07, CriticOrthErrP95=5.409464e-07
+18/03/2026 17:16:20 [INFO] Epoch 8 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:16:40 [INFO] Epoch 8 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97125 AverageReturn: 0.060703125 AverageDiscountedReturn: 0.04866148188061239
+18/03/2026 17:16:48 [INFO] Epoch 8 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9791735537190083 AverageReturn: 0.29325413223140495 AverageDiscountedReturn: 0.2086212226635929
+18/03/2026 17:16:48 [INFO] [Epoch 8] ActorGrad=0.144093, CriticGrad=0.017837, NaNInfTotal=0
+18/03/2026 17:16:48 [INFO] [Epoch 8] ActorOrthErrMean=2.812710e-07, ActorOrthErrP95=2.812710e-07
+18/03/2026 17:16:48 [INFO] [Epoch 8] CriticOrthErrMean=3.737573e-07, CriticOrthErrP95=5.344564e-07
+18/03/2026 17:17:36 [INFO] Epoch 9 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.701530612244898 AverageReturn: 0.043845663265306124 AverageDiscountedReturn: 0.023045126605473462
+18/03/2026 17:17:56 [INFO] Epoch 9 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.96625 AverageReturn: 0.060390625 AverageDiscountedReturn: 0.04650338685213945
+18/03/2026 17:18:04 [INFO] Epoch 9 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.40774793388429753 AverageDiscountedReturn: 0.2955407822361424
+18/03/2026 17:18:04 [INFO] [Epoch 9] ActorGrad=0.107997, CriticGrad=0.023444, NaNInfTotal=0
+18/03/2026 17:18:04 [INFO] [Epoch 9] ActorOrthErrMean=3.454568e-07, ActorOrthErrP95=3.454568e-07
+18/03/2026 17:18:04 [INFO] [Epoch 9] CriticOrthErrMean=3.866048e-07, CriticOrthErrP95=6.320286e-07
+18/03/2026 17:18:53 [INFO] Epoch 10 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:19:14 [INFO] Epoch 10 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9125 AverageReturn: 0.13328125 AverageDiscountedReturn: 0.03228233452623066
+18/03/2026 17:19:20 [INFO] Epoch 10 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.988099173553719 AverageReturn: 0.3488739669421488 AverageDiscountedReturn: 0.27339857238310283
+18/03/2026 17:19:20 [INFO] [Epoch 10] ActorGrad=0.128794, CriticGrad=0.029590, NaNInfTotal=0
+18/03/2026 17:19:20 [INFO] [Epoch 10] ActorOrthErrMean=3.186677e-07, ActorOrthErrP95=3.186677e-07
+18/03/2026 17:19:20 [INFO] [Epoch 10] CriticOrthErrMean=3.630508e-07, CriticOrthErrP95=5.391348e-07
+18/03/2026 17:20:12 [INFO] Epoch 11 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:20:27 [INFO] Epoch 11 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.92875 AverageReturn: 0.19382812500000002 AverageDiscountedReturn: 0.05070874630574859
+18/03/2026 17:20:33 [INFO] Epoch 11 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.3506404958677686 AverageDiscountedReturn: 0.2610837857165368
+18/03/2026 17:20:33 [INFO] [Epoch 11] ActorGrad=0.089284, CriticGrad=0.029484, NaNInfTotal=0
+18/03/2026 17:20:33 [INFO] [Epoch 11] ActorOrthErrMean=6.490715e-07, ActorOrthErrP95=6.490715e-07
+18/03/2026 17:20:33 [INFO] [Epoch 11] CriticOrthErrMean=3.712801e-07, CriticOrthErrP95=5.243592e-07
+18/03/2026 17:21:25 [INFO] Epoch 12 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:21:44 [INFO] Epoch 12 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.915 AverageReturn: 0.24148437499999997 AverageDiscountedReturn: 0.08041181393594785
+18/03/2026 17:21:47 [INFO] Epoch 12 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.44691115702479334 AverageDiscountedReturn: 0.31778139887838436
+18/03/2026 17:21:47 [INFO] [Epoch 12] ActorGrad=0.137594, CriticGrad=0.028985, NaNInfTotal=0
+18/03/2026 17:21:47 [INFO] [Epoch 12] ActorOrthErrMean=1.861390e-07, ActorOrthErrP95=1.861390e-07
+18/03/2026 17:21:47 [INFO] [Epoch 12] CriticOrthErrMean=3.930282e-07, CriticOrthErrP95=5.867295e-07
+18/03/2026 17:22:37 [INFO] Epoch 13 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:22:52 [INFO] Epoch 13 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.95 AverageReturn: 0.22734375 AverageDiscountedReturn: 0.0856756018244878
+18/03/2026 17:22:55 [INFO] Epoch 13 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9866115702479339 AverageReturn: 0.35138429752066114 AverageDiscountedReturn: 0.2672077999603938
+18/03/2026 17:22:55 [INFO] [Epoch 13] ActorGrad=0.193809, CriticGrad=0.107575, NaNInfTotal=0
+18/03/2026 17:22:55 [INFO] [Epoch 13] ActorOrthErrMean=2.959697e-07, ActorOrthErrP95=2.959697e-07
+18/03/2026 17:22:55 [INFO] [Epoch 13] CriticOrthErrMean=3.965433e-07, CriticOrthErrP95=6.460228e-07
+18/03/2026 17:23:46 [INFO] Epoch 14 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:23:56 [INFO] Epoch 14 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.92125 AverageReturn: 0.276484375 AverageDiscountedReturn: 0.07113949698710528
+18/03/2026 17:23:57 [INFO] Epoch 14 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.6719731404958678 AverageDiscountedReturn: 0.5870762168741099
+18/03/2026 17:23:57 [INFO] [Epoch 14] ActorGrad=0.182442, CriticGrad=0.074416, NaNInfTotal=0
+18/03/2026 17:23:57 [INFO] [Epoch 14] ActorOrthErrMean=4.674918e-07, ActorOrthErrP95=4.674918e-07
+18/03/2026 17:23:57 [INFO] [Epoch 14] CriticOrthErrMean=4.037200e-07, CriticOrthErrP95=5.931972e-07
+18/03/2026 17:24:49 [INFO] Epoch 15 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:25:02 [INFO] Epoch 15 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.92125 AverageReturn: 0.32039062500000004 AverageDiscountedReturn: 0.08215414746547955
+18/03/2026 17:25:03 [INFO] Epoch 15 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.3630061983471074 AverageDiscountedReturn: 0.30017220291922125
+18/03/2026 17:25:03 [INFO] [Epoch 15] ActorGrad=0.199692, CriticGrad=0.025300, NaNInfTotal=0
+18/03/2026 17:25:03 [INFO] [Epoch 15] ActorOrthErrMean=5.216905e-07, ActorOrthErrP95=5.216905e-07
+18/03/2026 17:25:03 [INFO] [Epoch 15] CriticOrthErrMean=3.596554e-07, CriticOrthErrP95=5.338036e-07
+18/03/2026 17:25:57 [INFO] Epoch 16 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.6647959183673469 AverageReturn: 0.04154974489795918 AverageDiscountedReturn: 0.02015126771260313
+18/03/2026 17:26:03 [INFO] Epoch 16 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9425 AverageReturn: 0.665 AverageDiscountedReturn: 0.25800804293515023
+18/03/2026 17:26:04 [INFO] Epoch 16 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.5475309917355371 AverageDiscountedReturn: 0.4665951368808634
+18/03/2026 17:26:04 [INFO] [Epoch 16] ActorGrad=0.178083, CriticGrad=0.037059, NaNInfTotal=0
+18/03/2026 17:26:04 [INFO] [Epoch 16] ActorOrthErrMean=3.852719e-07, ActorOrthErrP95=3.852719e-07
+18/03/2026 17:26:04 [INFO] [Epoch 16] CriticOrthErrMean=3.787323e-07, CriticOrthErrP95=5.643208e-07
+18/03/2026 17:26:55 [INFO] Epoch 17 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:27:05 [INFO] Epoch 17 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.94875 AverageReturn: 0.303125 AverageDiscountedReturn: 0.09054881536075489
+18/03/2026 17:27:06 [INFO] Epoch 17 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.6141219008264462 AverageDiscountedReturn: 0.553320722885672
+18/03/2026 17:27:06 [INFO] [Epoch 17] ActorGrad=0.207910, CriticGrad=0.064817, NaNInfTotal=0
+18/03/2026 17:27:06 [INFO] [Epoch 17] ActorOrthErrMean=5.360922e-07, ActorOrthErrP95=5.360922e-07
+18/03/2026 17:27:06 [INFO] [Epoch 17] CriticOrthErrMean=3.905570e-07, CriticOrthErrP95=5.972785e-07
+18/03/2026 17:27:57 [INFO] Epoch 18 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:28:05 [INFO] Epoch 18 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.955 AverageReturn: 0.488671875 AverageDiscountedReturn: 0.19833500130101145
+18/03/2026 17:28:06 [INFO] Epoch 18 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.5537603305785124 AverageDiscountedReturn: 0.504810232267902
+18/03/2026 17:28:06 [INFO] [Epoch 18] ActorGrad=0.149647, CriticGrad=0.017960, NaNInfTotal=0
+18/03/2026 17:28:06 [INFO] [Epoch 18] ActorOrthErrMean=3.438491e-07, ActorOrthErrP95=3.438491e-07
+18/03/2026 17:28:06 [INFO] [Epoch 18] CriticOrthErrMean=3.845623e-07, CriticOrthErrP95=5.422293e-07
+18/03/2026 17:28:58 [INFO] Epoch 19 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:29:07 [INFO] Epoch 19 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.93125 AverageReturn: 0.257421875 AverageDiscountedReturn: 0.09190694913471129
+18/03/2026 17:29:09 [INFO] Epoch 19 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.5392561983471074 AverageDiscountedReturn: 0.4388323106443306
+18/03/2026 17:29:09 [INFO] [Epoch 19] ActorGrad=0.210341, CriticGrad=0.038554, NaNInfTotal=0
+18/03/2026 17:29:09 [INFO] [Epoch 19] ActorOrthErrMean=3.288609e-07, ActorOrthErrP95=3.288609e-07
+18/03/2026 17:29:09 [INFO] [Epoch 19] CriticOrthErrMean=3.918053e-07, CriticOrthErrP95=5.676611e-07
+18/03/2026 17:30:00 [INFO] Epoch 20 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:30:08 [INFO] Epoch 20 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.965 AverageReturn: 0.30609375 AverageDiscountedReturn: 0.10594753348163792
+18/03/2026 17:30:09 [INFO] Epoch 20 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.3067355371900826 AverageDiscountedReturn: 0.27609434644450614
+18/03/2026 17:30:09 [INFO] [Epoch 20] ActorGrad=0.214297, CriticGrad=0.067268, NaNInfTotal=0
+18/03/2026 17:30:09 [INFO] [Epoch 20] ActorOrthErrMean=3.177507e-07, ActorOrthErrP95=3.177507e-07
+18/03/2026 17:30:09 [INFO] [Epoch 20] CriticOrthErrMean=3.618810e-07, CriticOrthErrP95=5.409883e-07
+18/03/2026 17:31:02 [INFO] Epoch 21 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:31:15 [INFO] Epoch 21 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.96 AverageReturn: 0.438359375 AverageDiscountedReturn: 0.20681104291209457
+18/03/2026 17:31:16 [INFO] Epoch 21 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.42922520661157026 AverageDiscountedReturn: 0.3828457148582878
+18/03/2026 17:31:16 [INFO] [Epoch 21] ActorGrad=0.217561, CriticGrad=0.064046, NaNInfTotal=0
+18/03/2026 17:31:16 [INFO] [Epoch 21] ActorOrthErrMean=3.329834e-07, ActorOrthErrP95=3.329834e-07
+18/03/2026 17:31:16 [INFO] [Epoch 21] CriticOrthErrMean=3.809416e-07, CriticOrthErrP95=5.725715e-07
+18/03/2026 17:32:08 [INFO] Epoch 22 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:32:11 [INFO] Epoch 22 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.95375 AverageReturn: 0.44765625 AverageDiscountedReturn: 0.21581160273382097
+18/03/2026 17:32:11 [INFO] Epoch 22 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.5506921487603306 AverageDiscountedReturn: 0.48496296715701565
+18/03/2026 17:32:11 [INFO] [Epoch 22] ActorGrad=0.301335, CriticGrad=0.037514, NaNInfTotal=0
+18/03/2026 17:32:11 [INFO] [Epoch 22] ActorOrthErrMean=2.184648e-07, ActorOrthErrP95=2.184648e-07
+18/03/2026 17:32:11 [INFO] [Epoch 22] CriticOrthErrMean=3.741230e-07, CriticOrthErrP95=5.972004e-07
+18/03/2026 17:33:03 [INFO] Epoch 23 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:33:08 [INFO] Epoch 23 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.975 AverageReturn: 0.509609375 AverageDiscountedReturn: 0.2982445151731161
+18/03/2026 17:33:09 [INFO] Epoch 23 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.48623966942148766 AverageDiscountedReturn: 0.40988948998272945
+18/03/2026 17:33:09 [INFO] [Epoch 23] ActorGrad=0.244538, CriticGrad=0.137263, NaNInfTotal=0
+18/03/2026 17:33:09 [INFO] [Epoch 23] ActorOrthErrMean=4.368796e-07, ActorOrthErrP95=4.368796e-07
+18/03/2026 17:33:09 [INFO] [Epoch 23] CriticOrthErrMean=3.630712e-07, CriticOrthErrP95=5.107801e-07
+18/03/2026 17:34:00 [INFO] Epoch 24 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:34:05 [INFO] Epoch 24 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9725 AverageReturn: 0.52359375 AverageDiscountedReturn: 0.32412832942998826
+18/03/2026 17:34:05 [INFO] Epoch 24 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.5504132231404959 AverageDiscountedReturn: 0.4834878188967666
+18/03/2026 17:34:05 [INFO] [Epoch 24] ActorGrad=0.234191, CriticGrad=0.031948, NaNInfTotal=0
+18/03/2026 17:34:05 [INFO] [Epoch 24] ActorOrthErrMean=3.492416e-07, ActorOrthErrP95=3.492416e-07
+18/03/2026 17:34:05 [INFO] [Epoch 24] CriticOrthErrMean=3.768111e-07, CriticOrthErrP95=5.613560e-07
+18/03/2026 17:34:57 [INFO] Epoch 25 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:34:59 [INFO] Epoch 25 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97375 AverageReturn: 0.467734375 AverageDiscountedReturn: 0.2930805357694367
+18/03/2026 17:35:00 [INFO] Epoch 25 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.988099173553719 AverageReturn: 0.24479338842975207 AverageDiscountedReturn: 0.2153174747193622
+18/03/2026 17:35:00 [INFO] [Epoch 25] ActorGrad=0.183722, CriticGrad=0.113254, NaNInfTotal=0
+18/03/2026 17:35:00 [INFO] [Epoch 25] ActorOrthErrMean=2.874200e-07, ActorOrthErrP95=2.874200e-07
+18/03/2026 17:35:00 [INFO] [Epoch 25] CriticOrthErrMean=3.808813e-07, CriticOrthErrP95=5.405644e-07
+18/03/2026 17:35:52 [INFO] Epoch 26 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:35:54 [INFO] Epoch 26 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.47406250000000005 AverageDiscountedReturn: 0.32012861879105675
+18/03/2026 17:35:55 [INFO] Epoch 26 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.37035123966942146 AverageDiscountedReturn: 0.34437008169626426
+18/03/2026 17:35:55 [INFO] [Epoch 26] ActorGrad=0.212860, CriticGrad=0.127043, NaNInfTotal=0
+18/03/2026 17:35:55 [INFO] [Epoch 26] ActorOrthErrMean=3.233707e-07, ActorOrthErrP95=3.233707e-07
+18/03/2026 17:35:55 [INFO] [Epoch 26] CriticOrthErrMean=3.865786e-07, CriticOrthErrP95=5.731856e-07
+18/03/2026 17:36:50 [INFO] Epoch 27 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:36:53 [INFO] Epoch 27 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97625 AverageReturn: 0.57578125 AverageDiscountedReturn: 0.3510664528554207
+18/03/2026 17:36:53 [INFO] Epoch 27 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.6803409090909092 AverageDiscountedReturn: 0.6411969887157261
+18/03/2026 17:36:53 [INFO] [Epoch 27] ActorGrad=0.186875, CriticGrad=0.173160, NaNInfTotal=0
+18/03/2026 17:36:53 [INFO] [Epoch 27] ActorOrthErrMean=3.924352e-07, ActorOrthErrP95=3.924352e-07
+18/03/2026 17:36:53 [INFO] [Epoch 27] CriticOrthErrMean=3.600082e-07, CriticOrthErrP95=5.345950e-07
+18/03/2026 17:37:47 [INFO] Epoch 28 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:37:49 [INFO] Epoch 28 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.596015625 AverageDiscountedReturn: 0.4203039816778258
+18/03/2026 17:37:49 [INFO] Epoch 28 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.4904235537190083 AverageDiscountedReturn: 0.43587299323031314
+18/03/2026 17:37:50 [INFO] [Epoch 28] ActorGrad=0.286895, CriticGrad=0.128011, NaNInfTotal=0
+18/03/2026 17:37:50 [INFO] [Epoch 28] ActorOrthErrMean=2.419430e-07, ActorOrthErrP95=2.419430e-07
+18/03/2026 17:37:50 [INFO] [Epoch 28] CriticOrthErrMean=3.600828e-07, CriticOrthErrP95=5.345000e-07
+18/03/2026 17:38:42 [INFO] Epoch 29 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:38:44 [INFO] Epoch 29 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.46882812500000004 AverageDiscountedReturn: 0.3075888503847649
+18/03/2026 17:38:45 [INFO] Epoch 29 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.42857438016528926 AverageDiscountedReturn: 0.37791251989962565
+18/03/2026 17:38:45 [INFO] [Epoch 29] ActorGrad=0.196246, CriticGrad=0.074969, NaNInfTotal=0
+18/03/2026 17:38:45 [INFO] [Epoch 29] ActorOrthErrMean=4.654701e-07, ActorOrthErrP95=4.654701e-07
+18/03/2026 17:38:45 [INFO] [Epoch 29] CriticOrthErrMean=4.035795e-07, CriticOrthErrP95=5.602550e-07
+18/03/2026 17:39:36 [INFO] Epoch 30 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:39:39 [INFO] Epoch 30 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9725 AverageReturn: 0.449921875 AverageDiscountedReturn: 0.22842817788196196
+18/03/2026 17:39:40 [INFO] Epoch 30 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.548646694214876 AverageDiscountedReturn: 0.4802632352663206
+18/03/2026 17:39:40 [INFO] [Epoch 30] ActorGrad=0.195828, CriticGrad=0.056798, NaNInfTotal=0
+18/03/2026 17:39:40 [INFO] [Epoch 30] ActorOrthErrMean=5.111251e-07, ActorOrthErrP95=5.111251e-07
+18/03/2026 17:39:40 [INFO] [Epoch 30] CriticOrthErrMean=3.717837e-07, CriticOrthErrP95=5.203905e-07
+18/03/2026 17:40:32 [INFO] Epoch 31 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:40:33 [INFO] Epoch 31 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.659453125 AverageDiscountedReturn: 0.4868764798532089
+18/03/2026 17:40:34 [INFO] Epoch 31 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.5504132231404959 AverageDiscountedReturn: 0.48154470226282975
+18/03/2026 17:40:34 [INFO] [Epoch 31] ActorGrad=0.220501, CriticGrad=0.088432, NaNInfTotal=0
+18/03/2026 17:40:34 [INFO] [Epoch 31] ActorOrthErrMean=4.969662e-07, ActorOrthErrP95=4.969662e-07
+18/03/2026 17:40:34 [INFO] [Epoch 31] CriticOrthErrMean=3.855589e-07, CriticOrthErrP95=5.595804e-07
+18/03/2026 17:41:26 [INFO] Epoch 32 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:41:28 [INFO] Epoch 32 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97125 AverageReturn: 0.47109375 AverageDiscountedReturn: 0.3080435470028173
+18/03/2026 17:41:29 [INFO] Epoch 32 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.6160743801652893 AverageDiscountedReturn: 0.5657631277596721
+18/03/2026 17:41:29 [INFO] [Epoch 32] ActorGrad=0.204052, CriticGrad=0.205560, NaNInfTotal=0
+18/03/2026 17:41:29 [INFO] [Epoch 32] ActorOrthErrMean=3.606430e-07, ActorOrthErrP95=3.606430e-07
+18/03/2026 17:41:29 [INFO] [Epoch 32] CriticOrthErrMean=3.607419e-07, CriticOrthErrP95=5.636635e-07
+18/03/2026 17:42:23 [INFO] Epoch 33 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:42:25 [INFO] Epoch 33 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97875 AverageReturn: 0.4753125 AverageDiscountedReturn: 0.3327227143306922
+18/03/2026 17:42:26 [INFO] Epoch 33 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.42876033057851237 AverageDiscountedReturn: 0.379608151657141
+18/03/2026 17:42:26 [INFO] [Epoch 33] ActorGrad=0.178306, CriticGrad=0.060741, NaNInfTotal=0
+18/03/2026 17:42:26 [INFO] [Epoch 33] ActorOrthErrMean=3.404332e-07, ActorOrthErrP95=3.404332e-07
+18/03/2026 17:42:26 [INFO] [Epoch 33] CriticOrthErrMean=3.717014e-07, CriticOrthErrP95=5.632855e-07
+18/03/2026 17:43:19 [INFO] Epoch 34 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:43:21 [INFO] Epoch 34 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.96625 AverageReturn: 0.524296875 AverageDiscountedReturn: 0.31914079810636314
+18/03/2026 17:43:22 [INFO] Epoch 34 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.3701652892561983 AverageDiscountedReturn: 0.34307935716584675
+18/03/2026 17:43:22 [INFO] [Epoch 34] ActorGrad=0.204942, CriticGrad=0.061970, NaNInfTotal=0
+18/03/2026 17:43:22 [INFO] [Epoch 34] ActorOrthErrMean=4.490026e-07, ActorOrthErrP95=4.490026e-07
+18/03/2026 17:43:22 [INFO] [Epoch 34] CriticOrthErrMean=3.646605e-07, CriticOrthErrP95=5.238088e-07
+18/03/2026 17:44:14 [INFO] Epoch 35 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:44:16 [INFO] Epoch 35 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97875 AverageReturn: 0.5899218749999999 AverageDiscountedReturn: 0.3995897710751024
+18/03/2026 17:44:16 [INFO] Epoch 35 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.36895661157024795 AverageDiscountedReturn: 0.3347811622618287
+18/03/2026 17:44:17 [INFO] [Epoch 35] ActorGrad=0.230090, CriticGrad=0.123278, NaNInfTotal=0
+18/03/2026 17:44:17 [INFO] [Epoch 35] ActorOrthErrMean=3.074459e-07, ActorOrthErrP95=3.074459e-07
+18/03/2026 17:44:17 [INFO] [Epoch 35] CriticOrthErrMean=3.837847e-07, CriticOrthErrP95=5.247060e-07
+18/03/2026 17:45:09 [INFO] Epoch 36 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:45:10 [INFO] Epoch 36 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.975 AverageReturn: 0.720234375 AverageDiscountedReturn: 0.5345080449835455
+18/03/2026 17:45:11 [INFO] Epoch 36 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.6149586776859504 AverageDiscountedReturn: 0.5584037425292729
+18/03/2026 17:45:11 [INFO] [Epoch 36] ActorGrad=0.212332, CriticGrad=0.118913, NaNInfTotal=0
+18/03/2026 17:45:11 [INFO] [Epoch 36] ActorOrthErrMean=7.088649e-07, ActorOrthErrP95=7.088649e-07
+18/03/2026 17:45:11 [INFO] [Epoch 36] CriticOrthErrMean=3.754265e-07, CriticOrthErrP95=5.790812e-07
+18/03/2026 17:46:02 [INFO] Epoch 37 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:46:04 [INFO] Epoch 37 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97625 AverageReturn: 0.715390625 AverageDiscountedReturn: 0.5057688686734532
+18/03/2026 17:46:04 [INFO] Epoch 37 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.6750413223140497 AverageDiscountedReturn: 0.6047037246956055
+18/03/2026 17:46:04 [INFO] [Epoch 37] ActorGrad=0.197833, CriticGrad=0.068664, NaNInfTotal=0
+18/03/2026 17:46:04 [INFO] [Epoch 37] ActorOrthErrMean=3.244421e-07, ActorOrthErrP95=3.244421e-07
+18/03/2026 17:46:04 [INFO] [Epoch 37] CriticOrthErrMean=3.981530e-07, CriticOrthErrP95=6.026268e-07
+18/03/2026 17:46:57 [INFO] Epoch 38 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:46:58 [INFO] Epoch 38 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97625 AverageReturn: 0.420546875 AverageDiscountedReturn: 0.3125226086973226
+18/03/2026 17:46:59 [INFO] Epoch 38 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.492004132231405 AverageDiscountedReturn: 0.44675757751201073
+18/03/2026 17:46:59 [INFO] [Epoch 38] ActorGrad=0.238355, CriticGrad=0.036037, NaNInfTotal=0
+18/03/2026 17:46:59 [INFO] [Epoch 38] ActorOrthErrMean=1.730419e-07, ActorOrthErrP95=1.730419e-07
+18/03/2026 17:46:59 [INFO] [Epoch 38] CriticOrthErrMean=3.827712e-07, CriticOrthErrP95=5.270126e-07
+18/03/2026 17:47:51 [INFO] Epoch 39 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:47:53 [INFO] Epoch 39 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.538671875 AverageDiscountedReturn: 0.39414595325752344
+18/03/2026 17:47:53 [INFO] Epoch 39 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9895867768595041 AverageReturn: 0.43024793388429755 AverageDiscountedReturn: 0.3886924502020237
+18/03/2026 17:47:53 [INFO] [Epoch 39] ActorGrad=0.266522, CriticGrad=0.124095, NaNInfTotal=0
+18/03/2026 17:47:53 [INFO] [Epoch 39] ActorOrthErrMean=3.596375e-07, ActorOrthErrP95=3.596375e-07
+18/03/2026 17:47:53 [INFO] [Epoch 39] CriticOrthErrMean=3.874116e-07, CriticOrthErrP95=6.344092e-07
+18/03/2026 17:48:46 [INFO] Epoch 40 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:48:47 [INFO] Epoch 40 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97875 AverageReturn: 0.59984375 AverageDiscountedReturn: 0.4421885681822906
+18/03/2026 17:48:48 [INFO] Epoch 40 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.3704442148760331 AverageDiscountedReturn: 0.34488375056299936
+18/03/2026 17:48:48 [INFO] [Epoch 40] ActorGrad=0.204088, CriticGrad=0.081451, NaNInfTotal=0
+18/03/2026 17:48:48 [INFO] [Epoch 40] ActorOrthErrMean=3.434739e-07, ActorOrthErrP95=3.434739e-07
+18/03/2026 17:48:48 [INFO] [Epoch 40] CriticOrthErrMean=3.656077e-07, CriticOrthErrP95=5.243198e-07
+18/03/2026 17:49:41 [INFO] Epoch 41 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:49:43 [INFO] Epoch 41 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97625 AverageReturn: 0.5435937500000001 AverageDiscountedReturn: 0.4196058646368718
+18/03/2026 17:49:43 [INFO] Epoch 41 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9895867768595041 AverageReturn: 0.4925619834710744 AverageDiscountedReturn: 0.45019934326039984
+18/03/2026 17:49:43 [INFO] [Epoch 41] ActorGrad=0.196912, CriticGrad=0.086147, NaNInfTotal=0
+18/03/2026 17:49:43 [INFO] [Epoch 41] ActorOrthErrMean=5.785807e-07, ActorOrthErrP95=5.785807e-07
+18/03/2026 17:49:43 [INFO] [Epoch 41] CriticOrthErrMean=3.683929e-07, CriticOrthErrP95=5.217395e-07
+18/03/2026 17:50:35 [INFO] Epoch 42 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:50:37 [INFO] Epoch 42 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97625 AverageReturn: 0.5978125 AverageDiscountedReturn: 0.43896883287823973
+18/03/2026 17:50:37 [INFO] Epoch 42 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.5553409090909092 AverageDiscountedReturn: 0.5151993168595714
+18/03/2026 17:50:37 [INFO] [Epoch 42] ActorGrad=0.238103, CriticGrad=0.050807, NaNInfTotal=0
+18/03/2026 17:50:37 [INFO] [Epoch 42] ActorOrthErrMean=5.387534e-07, ActorOrthErrP95=5.387534e-07
+18/03/2026 17:50:37 [INFO] [Epoch 42] CriticOrthErrMean=3.681766e-07, CriticOrthErrP95=5.521412e-07
+18/03/2026 17:51:29 [INFO] Epoch 43 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:51:30 [INFO] Epoch 43 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.78265625 AverageDiscountedReturn: 0.6014872392309302
+18/03/2026 17:51:31 [INFO] Epoch 43 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.5532954545454545 AverageDiscountedReturn: 0.5010158053085505
+18/03/2026 17:51:31 [INFO] [Epoch 43] ActorGrad=0.181054, CriticGrad=0.104456, NaNInfTotal=0
+18/03/2026 17:51:31 [INFO] [Epoch 43] ActorOrthErrMean=4.509861e-07, ActorOrthErrP95=4.509861e-07
+18/03/2026 17:51:31 [INFO] [Epoch 43] CriticOrthErrMean=3.592797e-07, CriticOrthErrP95=5.420393e-07
+18/03/2026 17:52:24 [INFO] Epoch 44 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:52:25 [INFO] Epoch 44 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98125 AverageReturn: 0.66203125 AverageDiscountedReturn: 0.5010920205126648
+18/03/2026 17:52:26 [INFO] Epoch 44 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.49330578512396694 AverageDiscountedReturn: 0.4554787628498752
+18/03/2026 17:52:26 [INFO] [Epoch 44] ActorGrad=0.321015, CriticGrad=0.093547, NaNInfTotal=0
+18/03/2026 17:52:26 [INFO] [Epoch 44] ActorOrthErrMean=4.408491e-07, ActorOrthErrP95=4.408491e-07
+18/03/2026 17:52:26 [INFO] [Epoch 44] CriticOrthErrMean=3.737366e-07, CriticOrthErrP95=5.307762e-07
+18/03/2026 17:53:18 [INFO] Epoch 45 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:53:19 [INFO] Epoch 45 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.47273437499999993 AverageDiscountedReturn: 0.32469352671398005
+18/03/2026 17:53:20 [INFO] Epoch 45 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.43266528925619835 AverageDiscountedReturn: 0.4060740566711849
+18/03/2026 17:53:20 [INFO] [Epoch 45] ActorGrad=0.249265, CriticGrad=0.063612, NaNInfTotal=0
+18/03/2026 17:53:20 [INFO] [Epoch 45] ActorOrthErrMean=3.052088e-07, ActorOrthErrP95=3.052088e-07
+18/03/2026 17:53:20 [INFO] [Epoch 45] CriticOrthErrMean=3.859720e-07, CriticOrthErrP95=5.878764e-07
+18/03/2026 17:54:14 [INFO] Epoch 46 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:54:16 [INFO] Epoch 46 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98 AverageReturn: 0.594765625 AverageDiscountedReturn: 0.42137201286949383
+18/03/2026 17:54:16 [INFO] Epoch 46 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.5542252066115703 AverageDiscountedReturn: 0.5076953358155794
+18/03/2026 17:54:16 [INFO] [Epoch 46] ActorGrad=0.216353, CriticGrad=0.123362, NaNInfTotal=0
+18/03/2026 17:54:16 [INFO] [Epoch 46] ActorOrthErrMean=2.936158e-07, ActorOrthErrP95=2.936158e-07
+18/03/2026 17:54:16 [INFO] [Epoch 46] CriticOrthErrMean=3.780167e-07, CriticOrthErrP95=5.505320e-07
+18/03/2026 17:55:10 [INFO] Epoch 47 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:55:11 [INFO] Epoch 47 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.5992968750000001 AverageDiscountedReturn: 0.44027495568673014
+18/03/2026 17:55:12 [INFO] Epoch 47 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9895867768595041 AverageReturn: 0.43043388429752066 AverageDiscountedReturn: 0.39015872801676355
+18/03/2026 17:55:12 [INFO] [Epoch 47] ActorGrad=0.221207, CriticGrad=0.015271, NaNInfTotal=0
+18/03/2026 17:55:12 [INFO] [Epoch 47] ActorOrthErrMean=3.394791e-07, ActorOrthErrP95=3.394791e-07
+18/03/2026 17:55:12 [INFO] [Epoch 47] CriticOrthErrMean=3.798719e-07, CriticOrthErrP95=5.885880e-07
+18/03/2026 17:56:05 [INFO] Epoch 48 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:56:06 [INFO] Epoch 48 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.845 AverageDiscountedReturn: 0.651474638146883
+18/03/2026 17:56:06 [INFO] Epoch 48 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.3712809917355372 AverageDiscountedReturn: 0.35090715159742036
+18/03/2026 17:56:06 [INFO] [Epoch 48] ActorGrad=0.209148, CriticGrad=0.032738, NaNInfTotal=0
+18/03/2026 17:56:06 [INFO] [Epoch 48] ActorOrthErrMean=3.792111e-07, ActorOrthErrP95=3.792111e-07
+18/03/2026 17:56:06 [INFO] [Epoch 48] CriticOrthErrMean=3.862453e-07, CriticOrthErrP95=5.549644e-07
+18/03/2026 17:56:58 [INFO] Epoch 49 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:56:59 [INFO] Epoch 49 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98 AverageReturn: 0.720078125 AverageDiscountedReturn: 0.5355414179588726
+18/03/2026 17:57:00 [INFO] Epoch 49 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.428202479338843 AverageDiscountedReturn: 0.37568617490238526
+18/03/2026 17:57:00 [INFO] [Epoch 49] ActorGrad=0.224035, CriticGrad=0.102225, NaNInfTotal=0
+18/03/2026 17:57:00 [INFO] [Epoch 49] ActorOrthErrMean=3.061000e-07, ActorOrthErrP95=3.061000e-07
+18/03/2026 17:57:00 [INFO] [Epoch 49] CriticOrthErrMean=3.662321e-07, CriticOrthErrP95=5.206662e-07
+18/03/2026 17:57:52 [INFO] Epoch 50 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:57:54 [INFO] Epoch 50 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.975 AverageReturn: 0.587421875 AverageDiscountedReturn: 0.40010484373254784
+18/03/2026 17:57:54 [INFO] Epoch 50 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.5541322314049587 AverageDiscountedReturn: 0.5067838468864853
+18/03/2026 17:57:54 [INFO] [Epoch 50] ActorGrad=0.259681, CriticGrad=0.012311, NaNInfTotal=0
+18/03/2026 17:57:54 [INFO] [Epoch 50] ActorOrthErrMean=4.787036e-07, ActorOrthErrP95=4.787036e-07
+18/03/2026 17:57:54 [INFO] [Epoch 50] CriticOrthErrMean=3.616788e-07, CriticOrthErrP95=5.269961e-07
+18/03/2026 17:58:45 [INFO] Epoch 51 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:58:47 [INFO] Epoch 51 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.783671875 AverageDiscountedReturn: 0.6061884898483725
+18/03/2026 17:58:47 [INFO] Epoch 51 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.5541322314049586 AverageDiscountedReturn: 0.5066705509612406
+18/03/2026 17:58:47 [INFO] [Epoch 51] ActorGrad=0.171602, CriticGrad=0.048286, NaNInfTotal=0
+18/03/2026 17:58:47 [INFO] [Epoch 51] ActorOrthErrMean=5.855677e-07, ActorOrthErrP95=5.855677e-07
+18/03/2026 17:58:47 [INFO] [Epoch 51] CriticOrthErrMean=3.667391e-07, CriticOrthErrP95=5.476817e-07
+18/03/2026 17:59:39 [INFO] Epoch 52 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 17:59:41 [INFO] Epoch 52 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9875 AverageReturn: 0.789140625 AverageDiscountedReturn: 0.6351012991878215
+18/03/2026 17:59:41 [INFO] Epoch 52 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.30803719008264463 AverageDiscountedReturn: 0.2828281158137908
+18/03/2026 17:59:41 [INFO] [Epoch 52] ActorGrad=0.172147, CriticGrad=0.042125, NaNInfTotal=0
+18/03/2026 17:59:41 [INFO] [Epoch 52] ActorOrthErrMean=3.839106e-07, ActorOrthErrP95=3.839106e-07
+18/03/2026 17:59:41 [INFO] [Epoch 52] CriticOrthErrMean=3.792757e-07, CriticOrthErrP95=5.735609e-07
+18/03/2026 18:00:35 [INFO] Epoch 53 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:00:37 [INFO] Epoch 53 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98875 AverageReturn: 0.7845312499999999 AverageDiscountedReturn: 0.6072610527962863
+18/03/2026 18:00:37 [INFO] Epoch 53 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.5552479338842975 AverageDiscountedReturn: 0.5145812527888176
+18/03/2026 18:00:37 [INFO] [Epoch 53] ActorGrad=0.264780, CriticGrad=0.048786, NaNInfTotal=0
+18/03/2026 18:00:37 [INFO] [Epoch 53] ActorOrthErrMean=2.288934e-07, ActorOrthErrP95=2.288934e-07
+18/03/2026 18:00:37 [INFO] [Epoch 53] CriticOrthErrMean=3.726298e-07, CriticOrthErrP95=5.409321e-07
+18/03/2026 18:01:29 [INFO] Epoch 54 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:01:31 [INFO] Epoch 54 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98125 AverageReturn: 0.78578125 AverageDiscountedReturn: 0.6152829440092518
+18/03/2026 18:01:31 [INFO] Epoch 54 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.6770867768595041 AverageDiscountedReturn: 0.618138356407504
+18/03/2026 18:01:31 [INFO] [Epoch 54] ActorGrad=0.201487, CriticGrad=0.084056, NaNInfTotal=0
+18/03/2026 18:01:31 [INFO] [Epoch 54] ActorOrthErrMean=4.476769e-07, ActorOrthErrP95=4.476769e-07
+18/03/2026 18:01:31 [INFO] [Epoch 54] CriticOrthErrMean=3.626765e-07, CriticOrthErrP95=5.378587e-07
+18/03/2026 18:02:24 [INFO] Epoch 55 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:02:25 [INFO] Epoch 55 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.603359375 AverageDiscountedReturn: 0.4645111696181686
+18/03/2026 18:02:26 [INFO] Epoch 55 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.5523657024793389 AverageDiscountedReturn: 0.49612385201008463
+18/03/2026 18:02:26 [INFO] [Epoch 55] ActorGrad=0.343097, CriticGrad=0.069517, NaNInfTotal=0
+18/03/2026 18:02:26 [INFO] [Epoch 55] ActorOrthErrMean=2.811273e-07, ActorOrthErrP95=2.811273e-07
+18/03/2026 18:02:26 [INFO] [Epoch 55] CriticOrthErrMean=3.788586e-07, CriticOrthErrP95=5.731379e-07
+18/03/2026 18:03:17 [INFO] Epoch 56 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:03:19 [INFO] Epoch 56 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98875 AverageReturn: 0.8482031250000001 AverageDiscountedReturn: 0.673111178224389
+18/03/2026 18:03:19 [INFO] Epoch 56 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.4312706611570248 AverageDiscountedReturn: 0.3958811028457154
+18/03/2026 18:03:19 [INFO] [Epoch 56] ActorGrad=0.212128, CriticGrad=0.028254, NaNInfTotal=0
+18/03/2026 18:03:19 [INFO] [Epoch 56] ActorOrthErrMean=6.480309e-08, ActorOrthErrP95=6.480309e-08
+18/03/2026 18:03:19 [INFO] [Epoch 56] CriticOrthErrMean=3.722776e-07, CriticOrthErrP95=5.735401e-07
+18/03/2026 18:04:11 [INFO] Epoch 57 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:04:12 [INFO] Epoch 57 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.72765625 AverageDiscountedReturn: 0.5815247880867511
+18/03/2026 18:04:12 [INFO] Epoch 57 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.4312706611570248 AverageDiscountedReturn: 0.396014619949739
+18/03/2026 18:04:12 [INFO] [Epoch 57] ActorGrad=0.208488, CriticGrad=0.062115, NaNInfTotal=0
+18/03/2026 18:04:12 [INFO] [Epoch 57] ActorOrthErrMean=3.547042e-07, ActorOrthErrP95=3.547042e-07
+18/03/2026 18:04:12 [INFO] [Epoch 57] CriticOrthErrMean=3.566578e-07, CriticOrthErrP95=5.639612e-07
+18/03/2026 18:05:04 [INFO] Epoch 58 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:05:06 [INFO] Epoch 58 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.728046875 AverageDiscountedReturn: 0.583960498813793
+18/03/2026 18:05:06 [INFO] Epoch 58 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.552551652892562 AverageDiscountedReturn: 0.4958801020690433
+18/03/2026 18:05:06 [INFO] [Epoch 58] ActorGrad=0.228429, CriticGrad=0.057607, NaNInfTotal=0
+18/03/2026 18:05:06 [INFO] [Epoch 58] ActorOrthErrMean=3.849417e-07, ActorOrthErrP95=3.849417e-07
+18/03/2026 18:05:06 [INFO] [Epoch 58] CriticOrthErrMean=3.698226e-07, CriticOrthErrP95=5.880915e-07
+18/03/2026 18:05:57 [INFO] Epoch 59 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:05:58 [INFO] Epoch 59 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.99 AverageReturn: 0.7877343750000001 AverageDiscountedReturn: 0.6325100642736057
+18/03/2026 18:05:59 [INFO] Epoch 59 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.6151446280991736 AverageDiscountedReturn: 0.5592156706981746
+18/03/2026 18:05:59 [INFO] [Epoch 59] ActorGrad=0.243728, CriticGrad=0.038427, NaNInfTotal=0
+18/03/2026 18:05:59 [INFO] [Epoch 59] ActorOrthErrMean=2.521751e-07, ActorOrthErrP95=2.521751e-07
+18/03/2026 18:05:59 [INFO] [Epoch 59] CriticOrthErrMean=4.003952e-07, CriticOrthErrP95=6.151123e-07
+18/03/2026 18:06:51 [INFO] Epoch 60 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:06:52 [INFO] Epoch 60 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.848203125 AverageDiscountedReturn: 0.676307015685111
+18/03/2026 18:06:53 [INFO] Epoch 60 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.3694214876033058 AverageDiscountedReturn: 0.3378845543446049
+18/03/2026 18:06:53 [INFO] [Epoch 60] ActorGrad=0.190129, CriticGrad=0.024895, NaNInfTotal=0
+18/03/2026 18:06:53 [INFO] [Epoch 60] ActorOrthErrMean=3.402755e-07, ActorOrthErrP95=3.402755e-07
+18/03/2026 18:06:53 [INFO] [Epoch 60] CriticOrthErrMean=3.802568e-07, CriticOrthErrP95=5.412513e-07
+18/03/2026 18:07:45 [INFO] Epoch 61 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:07:47 [INFO] Epoch 61 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98 AverageReturn: 0.85015625 AverageDiscountedReturn: 0.6856853492180217
+18/03/2026 18:07:47 [INFO] Epoch 61 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.3690495867768595 AverageDiscountedReturn: 0.33517908709848687
+18/03/2026 18:07:47 [INFO] [Epoch 61] ActorGrad=0.279309, CriticGrad=0.044106, NaNInfTotal=0
+18/03/2026 18:07:47 [INFO] [Epoch 61] ActorOrthErrMean=3.074337e-07, ActorOrthErrP95=3.074337e-07
+18/03/2026 18:07:47 [INFO] [Epoch 61] CriticOrthErrMean=3.819640e-07, CriticOrthErrP95=5.478138e-07
+18/03/2026 18:08:39 [INFO] Epoch 62 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:08:40 [INFO] Epoch 62 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.60890625 AverageDiscountedReturn: 0.5005632309836975
+18/03/2026 18:08:40 [INFO] Epoch 62 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.4284814049586777 AverageDiscountedReturn: 0.37787396925673944
+18/03/2026 18:08:40 [INFO] [Epoch 62] ActorGrad=0.128633, CriticGrad=0.057934, NaNInfTotal=0
+18/03/2026 18:08:40 [INFO] [Epoch 62] ActorOrthErrMean=3.877883e-07, ActorOrthErrP95=3.877883e-07
+18/03/2026 18:08:40 [INFO] [Epoch 62] CriticOrthErrMean=4.093406e-07, CriticOrthErrP95=6.031028e-07
+18/03/2026 18:09:32 [INFO] Epoch 63 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:09:33 [INFO] Epoch 63 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.8534375 AverageDiscountedReturn: 0.7085242095295908
+18/03/2026 18:09:34 [INFO] Epoch 63 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.36951446280991734 AverageDiscountedReturn: 0.33830401258178255
+18/03/2026 18:09:34 [INFO] [Epoch 63] ActorGrad=0.254064, CriticGrad=0.058864, NaNInfTotal=0
+18/03/2026 18:09:34 [INFO] [Epoch 63] ActorOrthErrMean=5.765439e-07, ActorOrthErrP95=5.765439e-07
+18/03/2026 18:09:34 [INFO] [Epoch 63] CriticOrthErrMean=3.587514e-07, CriticOrthErrP95=5.481099e-07
+18/03/2026 18:10:26 [INFO] Epoch 64 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:10:27 [INFO] Epoch 64 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.8474999999999999 AverageDiscountedReturn: 0.670163106554102
+18/03/2026 18:10:28 [INFO] Epoch 64 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.5542252066115703 AverageDiscountedReturn: 0.5071809557612186
+18/03/2026 18:10:28 [INFO] [Epoch 64] ActorGrad=0.222282, CriticGrad=0.045512, NaNInfTotal=0
+18/03/2026 18:10:28 [INFO] [Epoch 64] ActorOrthErrMean=5.971572e-07, ActorOrthErrP95=5.971572e-07
+18/03/2026 18:10:28 [INFO] [Epoch 64] CriticOrthErrMean=3.991219e-07, CriticOrthErrP95=5.478069e-07
+18/03/2026 18:11:20 [INFO] Epoch 65 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:11:21 [INFO] Epoch 65 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.726171875 AverageDiscountedReturn: 0.5765861599733246
+18/03/2026 18:11:22 [INFO] Epoch 65 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.988099173553719 AverageReturn: 0.614400826446281 AverageDiscountedReturn: 0.5536718418030833
+18/03/2026 18:11:22 [INFO] [Epoch 65] ActorGrad=0.168494, CriticGrad=0.042753, NaNInfTotal=0
+18/03/2026 18:11:22 [INFO] [Epoch 65] ActorOrthErrMean=5.148152e-07, ActorOrthErrP95=5.148152e-07
+18/03/2026 18:11:22 [INFO] [Epoch 65] CriticOrthErrMean=3.697294e-07, CriticOrthErrP95=5.403330e-07
+18/03/2026 18:12:16 [INFO] Epoch 66 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:12:17 [INFO] Epoch 66 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.67015625 AverageDiscountedReturn: 0.5540734134676237
+18/03/2026 18:12:18 [INFO] Epoch 66 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.5547830578512396 AverageDiscountedReturn: 0.5111961934756337
+18/03/2026 18:12:18 [INFO] [Epoch 66] ActorGrad=0.168281, CriticGrad=0.060977, NaNInfTotal=0
+18/03/2026 18:12:18 [INFO] [Epoch 66] ActorOrthErrMean=4.064819e-07, ActorOrthErrP95=4.064819e-07
+18/03/2026 18:12:18 [INFO] [Epoch 66] CriticOrthErrMean=3.512217e-07, CriticOrthErrP95=4.996974e-07
+18/03/2026 18:13:11 [INFO] Epoch 67 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:13:12 [INFO] Epoch 67 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.8471875 AverageDiscountedReturn: 0.6778860424718927
+18/03/2026 18:13:13 [INFO] Epoch 67 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.614400826446281 AverageDiscountedReturn: 0.5545936130167646
+18/03/2026 18:13:13 [INFO] [Epoch 67] ActorGrad=0.211524, CriticGrad=0.080240, NaNInfTotal=0
+18/03/2026 18:13:13 [INFO] [Epoch 67] ActorOrthErrMean=3.887376e-07, ActorOrthErrP95=3.887376e-07
+18/03/2026 18:13:13 [INFO] [Epoch 67] CriticOrthErrMean=3.666716e-07, CriticOrthErrP95=5.600536e-07
+18/03/2026 18:14:21 [INFO] Epoch 68 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:14:22 [INFO] Epoch 68 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97875 AverageReturn: 0.545078125 AverageDiscountedReturn: 0.4304010283912029
+18/03/2026 18:14:22 [INFO] Epoch 68 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.3698863636363636 AverageDiscountedReturn: 0.3408477474794466
+18/03/2026 18:14:22 [INFO] [Epoch 68] ActorGrad=0.270520, CriticGrad=0.061050, NaNInfTotal=0
+18/03/2026 18:14:22 [INFO] [Epoch 68] ActorOrthErrMean=4.049824e-07, ActorOrthErrP95=4.049824e-07
+18/03/2026 18:14:22 [INFO] [Epoch 68] CriticOrthErrMean=3.889117e-07, CriticOrthErrP95=5.604562e-07
+18/03/2026 18:15:18 [INFO] Epoch 69 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:15:19 [INFO] Epoch 69 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.78734375 AverageDiscountedReturn: 0.6224233008111353
+18/03/2026 18:15:20 [INFO] Epoch 69 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.43210743801652896 AverageDiscountedReturn: 0.4017918148047643
+18/03/2026 18:15:20 [INFO] [Epoch 69] ActorGrad=0.264330, CriticGrad=0.076123, NaNInfTotal=0
+18/03/2026 18:15:20 [INFO] [Epoch 69] ActorOrthErrMean=2.566043e-07, ActorOrthErrP95=2.566043e-07
+18/03/2026 18:15:20 [INFO] [Epoch 69] CriticOrthErrMean=3.403752e-07, CriticOrthErrP95=5.120485e-07
+18/03/2026 18:18:22 [INFO] Epoch 70 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:18:28 [INFO] Epoch 70 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.8509374999999999 AverageDiscountedReturn: 0.6931627297484135
+18/03/2026 18:18:31 [INFO] Epoch 70 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.3094318181818182 AverageDiscountedReturn: 0.29257923579021106
+18/03/2026 18:18:31 [INFO] [Epoch 70] ActorGrad=0.204482, CriticGrad=0.039621, NaNInfTotal=0
+18/03/2026 18:18:31 [INFO] [Epoch 70] ActorOrthErrMean=2.935909e-07, ActorOrthErrP95=2.935909e-07
+18/03/2026 18:18:31 [INFO] [Epoch 70] CriticOrthErrMean=3.853235e-07, CriticOrthErrP95=5.379896e-07
+18/03/2026 18:22:23 [INFO] Epoch 71 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:22:29 [INFO] Epoch 71 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.99 AverageReturn: 0.851796875 AverageDiscountedReturn: 0.6975789312525409
+18/03/2026 18:22:32 [INFO] Epoch 71 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.43164256198347106 AverageDiscountedReturn: 0.39891299655381235
+18/03/2026 18:22:32 [INFO] [Epoch 71] ActorGrad=0.427076, CriticGrad=0.090594, NaNInfTotal=0
+18/03/2026 18:22:32 [INFO] [Epoch 71] ActorOrthErrMean=3.497968e-07, ActorOrthErrP95=3.497968e-07
+18/03/2026 18:22:32 [INFO] [Epoch 71] CriticOrthErrMean=3.893739e-07, CriticOrthErrP95=6.341726e-07
+18/03/2026 18:26:11 [INFO] Epoch 72 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:26:17 [INFO] Epoch 72 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.54171875 AverageDiscountedReturn: 0.4141982546361964
+18/03/2026 18:26:20 [INFO] Epoch 72 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.6782954545454545 AverageDiscountedReturn: 0.6265441241861323
+18/03/2026 18:26:20 [INFO] [Epoch 72] ActorGrad=0.274989, CriticGrad=0.095232, NaNInfTotal=0
+18/03/2026 18:26:20 [INFO] [Epoch 72] ActorOrthErrMean=3.280592e-07, ActorOrthErrP95=3.280592e-07
+18/03/2026 18:26:20 [INFO] [Epoch 72] CriticOrthErrMean=3.756775e-07, CriticOrthErrP95=5.236034e-07
+18/03/2026 18:30:14 [INFO] Epoch 73 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:30:21 [INFO] Epoch 73 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98875 AverageReturn: 0.908828125 AverageDiscountedReturn: 0.7218285891657368
+18/03/2026 18:30:24 [INFO] Epoch 73 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.6785743801652893 AverageDiscountedReturn: 0.6286803106497832
+18/03/2026 18:30:24 [INFO] [Epoch 73] ActorGrad=0.335324, CriticGrad=0.061194, NaNInfTotal=0
+18/03/2026 18:30:24 [INFO] [Epoch 73] ActorOrthErrMean=2.090981e-07, ActorOrthErrP95=2.090981e-07
+18/03/2026 18:30:24 [INFO] [Epoch 73] CriticOrthErrMean=4.074587e-07, CriticOrthErrP95=6.486504e-07
+18/03/2026 18:34:05 [INFO] Epoch 74 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:34:14 [INFO] Epoch 74 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98125 AverageReturn: 0.84015625 AverageDiscountedReturn: 0.6291464599172016
+18/03/2026 18:34:17 [INFO] Epoch 74 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.4921900826446281 AverageDiscountedReturn: 0.44879446611378737
+18/03/2026 18:34:17 [INFO] [Epoch 74] ActorGrad=0.153918, CriticGrad=0.023921, NaNInfTotal=0
+18/03/2026 18:34:17 [INFO] [Epoch 74] ActorOrthErrMean=4.670027e-07, ActorOrthErrP95=4.670027e-07
+18/03/2026 18:34:17 [INFO] [Epoch 74] CriticOrthErrMean=3.401059e-07, CriticOrthErrP95=4.852384e-07
+18/03/2026 18:38:11 [INFO] Epoch 75 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:38:18 [INFO] Epoch 75 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98125 AverageReturn: 0.785703125 AverageDiscountedReturn: 0.6115517021780928
+18/03/2026 18:38:21 [INFO] Epoch 75 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.4938636363636364 AverageDiscountedReturn: 0.4595161620104561
+18/03/2026 18:38:21 [INFO] [Epoch 75] ActorGrad=0.229388, CriticGrad=0.083856, NaNInfTotal=0
+18/03/2026 18:38:21 [INFO] [Epoch 75] ActorOrthErrMean=3.694005e-07, ActorOrthErrP95=3.694005e-07
+18/03/2026 18:38:21 [INFO] [Epoch 75] CriticOrthErrMean=3.774993e-07, CriticOrthErrP95=6.646031e-07
+18/03/2026 18:41:27 [INFO] Epoch 76 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:41:34 [INFO] Epoch 76 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98 AverageReturn: 0.786328125 AverageDiscountedReturn: 0.6153850042539228
+18/03/2026 18:41:36 [INFO] Epoch 76 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.3706301652892562 AverageDiscountedReturn: 0.34620858840779123
+18/03/2026 18:41:37 [INFO] [Epoch 76] ActorGrad=0.209865, CriticGrad=0.011636, NaNInfTotal=0
+18/03/2026 18:41:37 [INFO] [Epoch 76] ActorOrthErrMean=3.612647e-07, ActorOrthErrP95=3.612647e-07
+18/03/2026 18:41:37 [INFO] [Epoch 76] CriticOrthErrMean=3.615528e-07, CriticOrthErrP95=5.611384e-07
+18/03/2026 18:45:19 [INFO] Epoch 77 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:45:26 [INFO] Epoch 77 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.8492968750000001 AverageDiscountedReturn: 0.679715310143892
+18/03/2026 18:45:30 [INFO] Epoch 77 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.4305268595041322 AverageDiscountedReturn: 0.39083336786092737
+18/03/2026 18:45:30 [INFO] [Epoch 77] ActorGrad=0.294335, CriticGrad=0.125348, NaNInfTotal=0
+18/03/2026 18:45:30 [INFO] [Epoch 77] ActorOrthErrMean=3.100259e-07, ActorOrthErrP95=3.100259e-07
+18/03/2026 18:45:30 [INFO] [Epoch 77] CriticOrthErrMean=3.716313e-07, CriticOrthErrP95=5.377299e-07
+18/03/2026 18:49:16 [INFO] Epoch 78 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:49:23 [INFO] Epoch 78 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98875 AverageReturn: 0.846953125 AverageDiscountedReturn: 0.6683859540485325
+18/03/2026 18:49:26 [INFO] Epoch 78 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.5544111570247934 AverageDiscountedReturn: 0.5085286813592751
+18/03/2026 18:49:27 [INFO] [Epoch 78] ActorGrad=0.241217, CriticGrad=0.075875, NaNInfTotal=0
+18/03/2026 18:49:27 [INFO] [Epoch 78] ActorOrthErrMean=2.144844e-07, ActorOrthErrP95=2.144844e-07
+18/03/2026 18:49:27 [INFO] [Epoch 78] CriticOrthErrMean=3.750158e-07, CriticOrthErrP95=5.278032e-07
+18/03/2026 18:53:15 [INFO] Epoch 79 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:53:21 [INFO] Epoch 79 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.7889843750000001 AverageDiscountedReturn: 0.6355819297629963
+18/03/2026 18:53:25 [INFO] Epoch 79 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9851239669421488 AverageReturn: 0.36709710743801655 AverageDiscountedReturn: 0.32221477796708065
+18/03/2026 18:53:25 [INFO] [Epoch 79] ActorGrad=0.290591, CriticGrad=0.075326, NaNInfTotal=0
+18/03/2026 18:53:25 [INFO] [Epoch 79] ActorOrthErrMean=3.842958e-07, ActorOrthErrP95=3.842958e-07
+18/03/2026 18:53:25 [INFO] [Epoch 79] CriticOrthErrMean=4.205456e-07, CriticOrthErrP95=5.767595e-07
+18/03/2026 18:57:03 [INFO] Epoch 80 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 18:57:08 [INFO] Epoch 80 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98 AverageReturn: 0.7886718749999999 AverageDiscountedReturn: 0.6305389907592235
+18/03/2026 18:57:11 [INFO] Epoch 80 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.3697004132231405 AverageDiscountedReturn: 0.3398780436837334
+18/03/2026 18:57:12 [INFO] [Epoch 80] ActorGrad=0.254344, CriticGrad=0.025298, NaNInfTotal=0
+18/03/2026 18:57:12 [INFO] [Epoch 80] ActorOrthErrMean=3.211669e-07, ActorOrthErrP95=3.211669e-07
+18/03/2026 18:57:12 [INFO] [Epoch 80] CriticOrthErrMean=3.768978e-07, CriticOrthErrP95=5.598970e-07
+18/03/2026 19:00:57 [INFO] Epoch 81 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:01:04 [INFO] Epoch 81 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98875 AverageReturn: 0.84875 AverageDiscountedReturn: 0.6779646208161647
+18/03/2026 19:01:07 [INFO] Epoch 81 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.6778305785123967 AverageDiscountedReturn: 0.6227726714184855
+18/03/2026 19:01:07 [INFO] [Epoch 81] ActorGrad=0.187056, CriticGrad=0.038376, NaNInfTotal=0
+18/03/2026 19:01:07 [INFO] [Epoch 81] ActorOrthErrMean=1.767005e-07, ActorOrthErrP95=1.767005e-07
+18/03/2026 19:01:07 [INFO] [Epoch 81] CriticOrthErrMean=4.109431e-07, CriticOrthErrP95=6.438438e-07
+18/03/2026 19:04:46 [INFO] Epoch 82 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:04:54 [INFO] Epoch 82 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.8440624999999999 AverageDiscountedReturn: 0.6528936227083533
+18/03/2026 19:04:57 [INFO] Epoch 82 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.4298760330578512 AverageDiscountedReturn: 0.3881947733393201
+18/03/2026 19:04:57 [INFO] [Epoch 82] ActorGrad=0.282433, CriticGrad=0.036419, NaNInfTotal=0
+18/03/2026 19:04:57 [INFO] [Epoch 82] ActorOrthErrMean=2.488542e-07, ActorOrthErrP95=2.488542e-07
+18/03/2026 19:04:57 [INFO] [Epoch 82] CriticOrthErrMean=3.749365e-07, CriticOrthErrP95=5.635702e-07
+18/03/2026 19:08:42 [INFO] Epoch 83 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:08:50 [INFO] Epoch 83 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.97875 AverageReturn: 0.84640625 AverageDiscountedReturn: 0.659526352374475
+18/03/2026 19:08:52 [INFO] Epoch 83 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.5558057851239669 AverageDiscountedReturn: 0.5184019427139004
+18/03/2026 19:08:53 [INFO] [Epoch 83] ActorGrad=0.251921, CriticGrad=0.096156, NaNInfTotal=0
+18/03/2026 19:08:53 [INFO] [Epoch 83] ActorOrthErrMean=2.492598e-07, ActorOrthErrP95=2.492598e-07
+18/03/2026 19:08:53 [INFO] [Epoch 83] CriticOrthErrMean=3.788758e-07, CriticOrthErrP95=5.416373e-07
+18/03/2026 19:12:32 [INFO] Epoch 84 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:12:39 [INFO] Epoch 84 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.8509375 AverageDiscountedReturn: 0.6911822054229895
+18/03/2026 19:12:41 [INFO] Epoch 84 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.3704442148760331 AverageDiscountedReturn: 0.34502571195410103
+18/03/2026 19:12:42 [INFO] [Epoch 84] ActorGrad=0.267025, CriticGrad=0.026120, NaNInfTotal=0
+18/03/2026 19:12:42 [INFO] [Epoch 84] ActorOrthErrMean=2.487456e-07, ActorOrthErrP95=2.487456e-07
+18/03/2026 19:12:42 [INFO] [Epoch 84] CriticOrthErrMean=3.736602e-07, CriticOrthErrP95=6.059933e-07
+18/03/2026 19:16:23 [INFO] Epoch 85 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:16:29 [INFO] Epoch 85 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.851328125 AverageDiscountedReturn: 0.6946644879684014
+18/03/2026 19:16:31 [INFO] Epoch 85 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.6170041322314049 AverageDiscountedReturn: 0.5719869506860462
+18/03/2026 19:16:32 [INFO] [Epoch 85] ActorGrad=0.206244, CriticGrad=0.056426, NaNInfTotal=0
+18/03/2026 19:16:32 [INFO] [Epoch 85] ActorOrthErrMean=5.103143e-07, ActorOrthErrP95=5.103143e-07
+18/03/2026 19:16:32 [INFO] [Epoch 85] CriticOrthErrMean=4.156399e-07, CriticOrthErrP95=6.321038e-07
+18/03/2026 19:18:26 [INFO] Epoch 86 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:18:27 [INFO] Epoch 86 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98875 AverageReturn: 0.849140625 AverageDiscountedReturn: 0.6833353977914641
+18/03/2026 19:18:28 [INFO] Epoch 86 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.4300619834710744 AverageDiscountedReturn: 0.3892046210754165
+18/03/2026 19:18:28 [INFO] [Epoch 86] ActorGrad=0.232326, CriticGrad=0.050270, NaNInfTotal=0
+18/03/2026 19:18:28 [INFO] [Epoch 86] ActorOrthErrMean=4.359025e-07, ActorOrthErrP95=4.359025e-07
+18/03/2026 19:18:28 [INFO] [Epoch 86] CriticOrthErrMean=3.709477e-07, CriticOrthErrP95=5.380017e-07
+18/03/2026 19:19:20 [INFO] Epoch 87 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:19:21 [INFO] Epoch 87 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98875 AverageReturn: 0.853046875 AverageDiscountedReturn: 0.7056249825908472
+18/03/2026 19:19:22 [INFO] Epoch 87 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.988099173553719 AverageReturn: 0.42894628099173554 AverageDiscountedReturn: 0.3799466959102237
+18/03/2026 19:19:22 [INFO] [Epoch 87] ActorGrad=0.248433, CriticGrad=0.043182, NaNInfTotal=0
+18/03/2026 19:19:22 [INFO] [Epoch 87] ActorOrthErrMean=5.643612e-07, ActorOrthErrP95=5.643612e-07
+18/03/2026 19:19:22 [INFO] [Epoch 87] CriticOrthErrMean=3.767079e-07, CriticOrthErrP95=5.504731e-07
+18/03/2026 19:20:15 [INFO] Epoch 88 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:20:16 [INFO] Epoch 88 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.790078125 AverageDiscountedReturn: 0.6414821859940185
+18/03/2026 19:20:16 [INFO] Epoch 88 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.36979338842975207 AverageDiscountedReturn: 0.3403294536146975
+18/03/2026 19:20:16 [INFO] [Epoch 88] ActorGrad=0.276208, CriticGrad=0.084902, NaNInfTotal=0
+18/03/2026 19:20:16 [INFO] [Epoch 88] ActorOrthErrMean=4.717251e-07, ActorOrthErrP95=4.717251e-07
+18/03/2026 19:20:16 [INFO] [Epoch 88] CriticOrthErrMean=3.601130e-07, CriticOrthErrP95=5.205851e-07
+18/03/2026 19:21:08 [INFO] Epoch 89 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:21:09 [INFO] Epoch 89 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.9125 MaxReturn: 0.9875 AverageReturn: 0.968203125 AverageDiscountedReturn: 0.7717133944573892
+18/03/2026 19:21:10 [INFO] Epoch 89 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.4312706611570248 AverageDiscountedReturn: 0.3965492626529775
+18/03/2026 19:21:10 [INFO] [Epoch 89] ActorGrad=0.338743, CriticGrad=0.097422, NaNInfTotal=0
+18/03/2026 19:21:10 [INFO] [Epoch 89] ActorOrthErrMean=5.007250e-07, ActorOrthErrP95=5.007250e-07
+18/03/2026 19:21:10 [INFO] [Epoch 89] CriticOrthErrMean=3.725167e-07, CriticOrthErrP95=5.404406e-07
+18/03/2026 19:22:02 [INFO] Epoch 90 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:22:03 [INFO] Epoch 90 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.85015625 AverageDiscountedReturn: 0.6898054113082525
+18/03/2026 19:22:04 [INFO] Epoch 90 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.4925619834710744 AverageDiscountedReturn: 0.4506296023837977
+18/03/2026 19:22:04 [INFO] [Epoch 90] ActorGrad=0.219883, CriticGrad=0.079800, NaNInfTotal=0
+18/03/2026 19:22:04 [INFO] [Epoch 90] ActorOrthErrMean=5.726901e-07, ActorOrthErrP95=5.726901e-07
+18/03/2026 19:22:04 [INFO] [Epoch 90] CriticOrthErrMean=3.715813e-07, CriticOrthErrP95=5.512048e-07
+18/03/2026 19:22:56 [INFO] Epoch 91 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:22:59 [INFO] Epoch 91 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.6896875 AverageDiscountedReturn: 0.5388883217976073
+18/03/2026 19:22:59 [INFO] Epoch 91 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.36858471074380167 AverageDiscountedReturn: 0.3320322365516835
+18/03/2026 19:22:59 [INFO] [Epoch 91] ActorGrad=0.251027, CriticGrad=0.052543, NaNInfTotal=0
+18/03/2026 19:22:59 [INFO] [Epoch 91] ActorOrthErrMean=3.791143e-07, ActorOrthErrP95=3.791143e-07
+18/03/2026 19:22:59 [INFO] [Epoch 91] CriticOrthErrMean=3.582634e-07, CriticOrthErrP95=5.600614e-07
+18/03/2026 19:23:50 [INFO] Epoch 92 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:23:52 [INFO] Epoch 92 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98625 AverageReturn: 0.91015625 AverageDiscountedReturn: 0.7334709880632667
+18/03/2026 19:23:52 [INFO] Epoch 92 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.676900826446281 AverageDiscountedReturn: 0.6169771170392329
+18/03/2026 19:23:52 [INFO] [Epoch 92] ActorGrad=0.179725, CriticGrad=0.064118, NaNInfTotal=0
+18/03/2026 19:23:52 [INFO] [Epoch 92] ActorOrthErrMean=5.419969e-07, ActorOrthErrP95=5.419969e-07
+18/03/2026 19:23:52 [INFO] [Epoch 92] CriticOrthErrMean=3.691333e-07, CriticOrthErrP95=5.317755e-07
+18/03/2026 19:24:44 [INFO] Epoch 93 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:24:46 [INFO] Epoch 93 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.8515625 AverageDiscountedReturn: 0.6948587031557011
+18/03/2026 19:24:46 [INFO] Epoch 93 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.42978305785123966 AverageDiscountedReturn: 0.3888311982806227
+18/03/2026 19:24:46 [INFO] [Epoch 93] ActorGrad=0.211894, CriticGrad=0.020616, NaNInfTotal=0
+18/03/2026 19:24:46 [INFO] [Epoch 93] ActorOrthErrMean=1.818322e-07, ActorOrthErrP95=1.818322e-07
+18/03/2026 19:24:46 [INFO] [Epoch 93] CriticOrthErrMean=4.059140e-07, CriticOrthErrP95=5.410636e-07
+18/03/2026 19:25:39 [INFO] Epoch 94 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:25:40 [INFO] Epoch 94 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.668203125 AverageDiscountedReturn: 0.5400782977412575
+18/03/2026 19:25:40 [INFO] Epoch 94 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9940495867768595 AverageReturn: 0.2468388429752066 AverageDiscountedReturn: 0.22917530469703803
+18/03/2026 19:25:40 [INFO] [Epoch 94] ActorGrad=0.228281, CriticGrad=0.103197, NaNInfTotal=0
+18/03/2026 19:25:40 [INFO] [Epoch 94] ActorOrthErrMean=4.008137e-07, ActorOrthErrP95=4.008137e-07
+18/03/2026 19:25:40 [INFO] [Epoch 94] CriticOrthErrMean=4.195755e-07, CriticOrthErrP95=5.736517e-07
+18/03/2026 19:26:32 [INFO] Epoch 95 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:26:36 [INFO] Epoch 95 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.98375 AverageReturn: 0.7838281250000001 AverageDiscountedReturn: 0.59883901274544
+18/03/2026 19:26:36 [INFO] Epoch 95 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.5540392561983472 AverageDiscountedReturn: 0.5065272859714436
+18/03/2026 19:26:36 [INFO] [Epoch 95] ActorGrad=0.214619, CriticGrad=0.070935, NaNInfTotal=0
+18/03/2026 19:26:36 [INFO] [Epoch 95] ActorOrthErrMean=2.956206e-07, ActorOrthErrP95=2.956206e-07
+18/03/2026 19:26:36 [INFO] [Epoch 95] CriticOrthErrMean=3.560657e-07, CriticOrthErrP95=5.251019e-07
+18/03/2026 19:27:29 [INFO] Epoch 96 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:27:30 [INFO] Epoch 96 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.99 AverageReturn: 0.78734375 AverageDiscountedReturn: 0.624305312920709
+18/03/2026 19:27:30 [INFO] Epoch 96 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.6122623966942149 AverageDiscountedReturn: 0.5418209728442858
+18/03/2026 19:27:30 [INFO] [Epoch 96] ActorGrad=0.224095, CriticGrad=0.057221, NaNInfTotal=0
+18/03/2026 19:27:30 [INFO] [Epoch 96] ActorOrthErrMean=4.195035e-07, ActorOrthErrP95=4.195035e-07
+18/03/2026 19:27:30 [INFO] [Epoch 96] CriticOrthErrMean=3.739770e-07, CriticOrthErrP95=5.504974e-07
+18/03/2026 19:28:22 [INFO] Epoch 97 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:28:23 [INFO] Epoch 97 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.790078125 AverageDiscountedReturn: 0.6400909697487613
+18/03/2026 19:28:24 [INFO] Epoch 97 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9925619834710744 AverageReturn: 0.6110537190082644 AverageDiscountedReturn: 0.5358987836343665
+18/03/2026 19:28:24 [INFO] [Epoch 97] ActorGrad=0.228791, CriticGrad=0.087353, NaNInfTotal=0
+18/03/2026 19:28:24 [INFO] [Epoch 97] ActorOrthErrMean=4.758880e-07, ActorOrthErrP95=4.758880e-07
+18/03/2026 19:28:24 [INFO] [Epoch 97] CriticOrthErrMean=3.976660e-07, CriticOrthErrP95=5.753762e-07
+18/03/2026 19:29:15 [INFO] Epoch 98 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:29:17 [INFO] Epoch 98 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.985 AverageReturn: 0.665234375 AverageDiscountedReturn: 0.5203900500406009
+18/03/2026 19:29:17 [INFO] Epoch 98 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.42894628099173554 AverageDiscountedReturn: 0.38126011043367375
+18/03/2026 19:29:17 [INFO] [Epoch 98] ActorGrad=0.304771, CriticGrad=0.034876, NaNInfTotal=0
+18/03/2026 19:29:17 [INFO] [Epoch 98] ActorOrthErrMean=4.794776e-07, ActorOrthErrP95=4.794776e-07
+18/03/2026 19:29:17 [INFO] [Epoch 98] CriticOrthErrMean=3.789128e-07, CriticOrthErrP95=5.387211e-07
+18/03/2026 19:30:10 [INFO] Epoch 99 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:30:11 [INFO] Epoch 99 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9825 AverageReturn: 0.8495312500000001 AverageDiscountedReturn: 0.6804342040395562
+18/03/2026 19:30:12 [INFO] Epoch 99 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9955371900826446 AverageReturn: 0.5529235537190083 AverageDiscountedReturn: 0.49889486407312583
+18/03/2026 19:30:12 [INFO] [Epoch 99] ActorGrad=0.233236, CriticGrad=0.053731, NaNInfTotal=0
+18/03/2026 19:30:12 [INFO] [Epoch 99] ActorOrthErrMean=3.649329e-07, ActorOrthErrP95=3.649329e-07
+18/03/2026 19:30:12 [INFO] [Epoch 99] CriticOrthErrMean=3.826961e-07, CriticOrthErrP95=5.213079e-07
+18/03/2026 19:31:03 [INFO] Epoch 100 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+18/03/2026 19:31:05 [INFO] Epoch 100 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.9875 AverageReturn: 0.849140625 AverageDiscountedReturn: 0.6808483147934468
+18/03/2026 19:31:05 [INFO] Epoch 100 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.9910743801652893 AverageReturn: 0.3683987603305785 AverageDiscountedReturn: 0.3307358169556622
+18/03/2026 19:31:05 [INFO] [Epoch 100] ActorGrad=0.211996, CriticGrad=0.073673, NaNInfTotal=0
+18/03/2026 19:31:05 [INFO] [Epoch 100] ActorOrthErrMean=3.209618e-07, ActorOrthErrP95=3.209618e-07
+18/03/2026 19:31:05 [INFO] [Epoch 100] CriticOrthErrMean=4.043361e-07, CriticOrthErrP95=5.600999e-07
+18/03/2026 19:31:05 [INFO] Saving Shared Backbone and Task Encoder of Critic Network
+18/03/2026 19:31:05 [INFO] Saving Shared Backbone and Task Encoder of Actor Network

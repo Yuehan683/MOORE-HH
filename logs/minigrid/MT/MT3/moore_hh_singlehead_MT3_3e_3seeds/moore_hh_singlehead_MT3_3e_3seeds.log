@@ -1,0 +1,10 @@
+17/03/2026 23:02:25 [INFO] ###################################################################################################
+17/03/2026 23:02:25 [INFO] Experiment Algorithm: MTPPO
+17/03/2026 23:02:25 [INFO] Experiment Environment: MT3
+17/03/2026 23:02:25 [INFO] Experiment Type: MT-Baseline
+17/03/2026 23:02:25 [INFO] Experiment Name: moore_hh_singlehead_MT3_3e_3seeds
+17/03/2026 23:02:25 [INFO] Requested CUDA: True
+17/03/2026 23:02:25 [INFO] torch.cuda.is_available(): True
+17/03/2026 23:02:25 [INFO] Orthogonalization enabled: True
+17/03/2026 23:02:25 [INFO] Orthogonalization backend: Householder-QR
+17/03/2026 23:02:25 [INFO] GPU mode detected: running experiments sequentially to avoid launching multiple CUDA jobs at once.

@@ -1,0 +1,68 @@
+17/03/2026 19:33:21 [INFO] MiniGridPPOMixtureSHNetwork(
+  (_task_encoder): Linear(in_features=3, out_features=3, bias=False)
+  (orth_layer): OrthogonalLayer1D()
+  (cnn): Sequential(
+    (0): InputLayer()
+    (1): ParallelLayer(
+      (model_layers): ModuleList(
+        (0-2): 3 x Sequential(
+          (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+          (1): ReLU()
+          (2): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+          (3): ReLU()
+          (4): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+          (5): Flatten(start_dim=1, end_dim=-1)
+        )
+      )
+    )
+    (2): OrthogonalLayer1D()
+  )
+  (_output_head): Sequential(
+    (0): Linear(in_features=1027, out_features=128, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+17/03/2026 19:33:21 [INFO] MiniGridPPOMixtureSHNetwork(
+  (_task_encoder): Linear(in_features=3, out_features=3, bias=False)
+  (orth_layer): OrthogonalLayer1D()
+  (cnn): Sequential(
+    (0): InputLayer()
+    (1): ParallelLayer(
+      (model_layers): ModuleList(
+        (0-2): 3 x Sequential(
+          (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+          (1): ReLU()
+          (2): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+          (3): ReLU()
+          (4): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+          (5): Flatten(start_dim=1, end_dim=-1)
+        )
+      )
+    )
+    (2): OrthogonalLayer1D()
+  )
+  (_output_head): Sequential(
+    (0): Linear(in_features=1027, out_features=128, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=128, out_features=7, bias=True)
+  )
+)
+17/03/2026 19:33:21 [INFO] Policy use_cuda: True
+17/03/2026 19:33:21 [INFO] Actor device: cuda:0
+17/03/2026 19:33:21 [INFO] Critic device: cuda:0
+17/03/2026 19:33:23 [INFO] Epoch 0 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+17/03/2026 19:33:29 [INFO] Epoch 0 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.6000000000000001 MaxReturn: 0.6000000000000001 AverageReturn: 0.6000000000000001 AverageDiscountedReturn: 0.024309628779924545
+17/03/2026 19:33:39 [INFO] Epoch 0 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+17/03/2026 19:33:50 [INFO] Epoch 1 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+17/03/2026 19:34:01 [INFO] Epoch 1 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+17/03/2026 19:34:05 [INFO] Epoch 1 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.7203305785123967 MaxReturn: 0.7203305785123967 AverageReturn: 0.7203305785123967 AverageDiscountedReturn: 0.10997987987742133
+17/03/2026 19:34:05 [INFO] [Epoch 1] ActorGrad=0.000000, CriticGrad=0.000000, NaNInfTotal=0
+17/03/2026 19:34:05 [INFO] [Epoch 1] ActorOrthErrMean=1.470495e-07, ActorOrthErrP95=1.470495e-07
+17/03/2026 19:34:14 [INFO] Epoch 2 | EnvName: MiniGrid-LavaGapS7-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+17/03/2026 19:34:25 [INFO] Epoch 2 | EnvName: MiniGrid-RedBlueDoors-6x6-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+17/03/2026 19:34:35 [INFO] Epoch 2 | EnvName: MiniGrid-MemoryS11-v0 MinReturn: 0.0 MaxReturn: 0.0 AverageReturn: 0.0 AverageDiscountedReturn: 0.0
+17/03/2026 19:34:35 [INFO] [Epoch 2] ActorGrad=0.000000, CriticGrad=0.000000, NaNInfTotal=0
+17/03/2026 19:34:35 [INFO] [Epoch 2] ActorOrthErrMean=2.463014e-07, ActorOrthErrP95=2.463014e-07
+17/03/2026 19:34:35 [INFO] Saving Shared Backbone and Task Encoder of Critic Network
+17/03/2026 19:34:35 [INFO] Saving Shared Backbone and Task Encoder of Actor Network

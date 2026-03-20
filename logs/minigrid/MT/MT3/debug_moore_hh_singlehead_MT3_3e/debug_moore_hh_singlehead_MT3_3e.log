@@ -1,0 +1,9 @@
+17/03/2026 19:33:09 [INFO] ###################################################################################################
+17/03/2026 19:33:09 [INFO] Experiment Algorithm: MTPPO
+17/03/2026 19:33:09 [INFO] Experiment Environment: MT3
+17/03/2026 19:33:09 [INFO] Experiment Type: MT-Baseline
+17/03/2026 19:33:09 [INFO] Experiment Name: debug_moore_hh_singlehead_MT3_3e
+17/03/2026 19:33:09 [INFO] Requested CUDA: True
+17/03/2026 19:33:09 [INFO] torch.cuda.is_available(): True
+17/03/2026 19:33:09 [INFO] Orthogonalization enabled: True
+17/03/2026 19:33:09 [INFO] Orthogonalization backend: Householder-QR

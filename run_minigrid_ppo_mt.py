@@ -53,6 +53,44 @@ MT_EXP = {
 }
 
 
+def get_grad_global_norm(module):
+    total_sq = 0.0
+    has_grad = False
+    for p in module.parameters():
+        if p.grad is not None:
+            g = p.grad.detach()
+            total_sq += g.norm(2).item() ** 2
+            has_grad = True
+    if not has_grad:
+        return 0.0
+    return total_sq ** 0.5
+
+
+def count_nan_inf_in_module(module):
+    count = 0
+    for p in module.parameters():
+        pdata = p.data
+        count += torch.isnan(pdata).sum().item()
+        count += torch.isinf(pdata).sum().item()
+
+        if p.grad is not None:
+            g = p.grad.detach()
+            count += torch.isnan(g).sum().item()
+            count += torch.isinf(g).sum().item()
+    return int(count)
+
+
+def get_network_orth_stats(network, prefix=""):
+    stats = {}
+    if hasattr(network, "get_orth_stats"):
+        raw_stats = network.get_orth_stats()
+        if raw_stats is None:
+            raw_stats = {}
+        for k, v in raw_stats.items():
+            stats[f"{prefix}{k}"] = v
+    return stats
+
+
 def run_experiment(args, save_dir, exp_id=0, seed=None):
     import matplotlib
     matplotlib.use('Agg')
@@ -77,7 +115,6 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
     n_steps = args.n_steps
     n_episodes_test = args.n_episodes_test
 
-    # MDP
     env_names = MT_EXP[args.env_name]
     horizon = args.horizon
     gamma = args.gamma
@@ -98,7 +135,6 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
     batch_size = args.batch_size
     train_frequency = args.train_frequency
 
-    # Policy
     actor_network = getattr(Network, args.actor_network)
     actor_n_features = args.actor_n_features
     lr_actor = args.lr_actor
@@ -109,6 +145,8 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         n_features=actor_n_features,
         n_contexts=n_contexts,
         orthogonal=args.orthogonal,
+        hh_rank_tol=args.hh_rank_tol,
+        hh_canon_sign=args.hh_canon_sign,
         learning_rate=lr_actor,
         n_experts=args.n_experts,
         use_cuda=args.use_cuda,
@@ -126,7 +164,6 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         'params': {'lr': lr_actor, 'betas': (0.9, 0.999)}
     }
 
-    # Critic
     critic_network = getattr(Network, args.critic_network)
     critic_n_features = args.critic_n_features
     lr_critic = args.lr_critic
@@ -142,6 +179,8 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         n_features=critic_n_features,
         n_contexts=n_contexts,
         orthogonal=args.orthogonal,
+        hh_rank_tol=args.hh_rank_tol,
+        hh_canon_sign=args.hh_canon_sign,
         learning_rate=lr_critic,
         n_experts=args.n_experts,
         input_shape=mdp[0].info.observation_space.shape,
@@ -149,7 +188,6 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         use_cuda=args.use_cuda
     )
 
-    # Algorithm
     eps = 0.2
     ent_coeff = 0.01
     lam = 0.95
@@ -182,7 +220,6 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
             config=vars(args)
         )
 
-    # Agent
     agent = MTPPO(mdp[0].info, policy, n_contexts=n_contexts, **alg_params)
 
     single_logger.info(agent._V.model.network)
@@ -203,10 +240,8 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
 
     os.makedirs(save_dir, exist_ok=True)
 
-    # Core
     core = Core(agent, mdp)
 
-    # Metrics
     metrics = {mdp_i.env_name: {} for mdp_i in mdp}
     for _, value in metrics.items():
         value.update({"MinReturn": []})
@@ -221,7 +256,6 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         }
     })
 
-    # Initial evaluation
     current_all_average_return = 0.0
     current_all_average_discounted_return = 0.0
 
@@ -271,13 +305,27 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         current_all_average_discounted_return / n_contexts
     )
 
+    actor_net = agent.policy._logits.model.network
+    critic_net = agent._V.model.network
+
+    initial_diag = {}
+    initial_diag.update(get_network_orth_stats(actor_net, prefix="actor/"))
+    initial_diag.update(get_network_orth_stats(critic_net, prefix="critic/"))
+    initial_diag["grad/actor_global_norm"] = get_grad_global_norm(actor_net)
+    initial_diag["grad/critic_global_norm"] = get_grad_global_norm(critic_net)
+    initial_diag["num/nan_inf_count_actor"] = count_nan_inf_in_module(actor_net)
+    initial_diag["num/nan_inf_count_critic"] = count_nan_inf_in_module(critic_net)
+    initial_diag["num/nan_inf_count_total"] = (
+        initial_diag["num/nan_inf_count_actor"] + initial_diag["num/nan_inf_count_critic"]
+    )
+
     if args.wandb:
         wandb.log({
             "all_minigrid/AverageReturn": current_all_average_return / n_contexts,
-            "all_minigrid/AverageDiscountedReturn": current_all_average_discounted_return / n_contexts
+            "all_minigrid/AverageDiscountedReturn": current_all_average_discounted_return / n_contexts,
+            **initial_diag
         }, step=0, commit=True)
 
-    # Training loop
     for n in trange(n_epochs):
         core.eval = False
         agent.policy.set_beta(beta)
@@ -337,10 +385,46 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
             current_all_average_discounted_return / n_contexts
         )
 
+        actor_net = agent.policy._logits.model.network
+        critic_net = agent._V.model.network
+
+        diag = {}
+        diag.update(get_network_orth_stats(actor_net, prefix="actor/"))
+        diag.update(get_network_orth_stats(critic_net, prefix="critic/"))
+        diag["grad/actor_global_norm"] = get_grad_global_norm(actor_net)
+        diag["grad/critic_global_norm"] = get_grad_global_norm(critic_net)
+        diag["num/nan_inf_count_actor"] = count_nan_inf_in_module(actor_net)
+        diag["num/nan_inf_count_critic"] = count_nan_inf_in_module(critic_net)
+        diag["num/nan_inf_count_total"] = (
+            diag["num/nan_inf_count_actor"] + diag["num/nan_inf_count_critic"]
+        )
+
+        single_logger.info(
+            f"[Epoch {n + 1}] "
+            f"ActorGrad={diag['grad/actor_global_norm']:.6f}, "
+            f"CriticGrad={diag['grad/critic_global_norm']:.6f}, "
+            f"NaNInfTotal={diag['num/nan_inf_count_total']}"
+        )
+
+        if "actor/orth/err_fro_mean" in diag:
+            single_logger.info(
+                f"[Epoch {n + 1}] "
+                f"ActorOrthErrMean={diag['actor/orth/err_fro_mean']:.6e}, "
+                f"ActorOrthErrP95={diag.get('actor/orth/err_fro_p95', 0.0):.6e}"
+            )
+
+        if "critic/orth/err_fro_mean" in diag:
+            single_logger.info(
+                f"[Epoch {n + 1}] "
+                f"CriticOrthErrMean={diag['critic/orth/err_fro_mean']:.6e}, "
+                f"CriticOrthErrP95={diag.get('critic/orth/err_fro_p95', 0.0):.6e}"
+            )
+
         if args.wandb:
             wandb.log({
                 "all_minigrid/AverageReturn": current_all_average_return / n_contexts,
-                "all_minigrid/AverageDiscountedReturn": current_all_average_discounted_return / n_contexts
+                "all_minigrid/AverageDiscountedReturn": current_all_average_discounted_return / n_contexts,
+                **diag
             }, step=n + 1, commit=True)
 
     if args.wandb:
@@ -370,13 +454,11 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
 
 
 if __name__ == '__main__':
-    # arguments
     args = argparser()
 
     if args.seed is not None:
         assert len(args.seed) == args.n_exp
 
-    # logging
     results_dir = os.path.join(args.results_dir, "minigrid", "MT", args.env_name)
     logger = Logger(
         args.exp_name,
@@ -392,6 +474,8 @@ if __name__ == '__main__':
     logger.info("Experiment Name: " + args.exp_name)
     logger.info(f"Requested CUDA: {args.use_cuda}")
     logger.info(f"torch.cuda.is_available(): {torch.cuda.is_available()}")
+    logger.info(f"Orthogonalization enabled: {args.orthogonal}")
+    logger.info("Orthogonalization backend: Householder-QR")
 
     if args.use_cuda and not torch.cuda.is_available():
         raise RuntimeError("--use_cuda was specified, but torch.cuda.is_available() is False.")
@@ -400,7 +484,6 @@ if __name__ == '__main__':
     with open(os.path.join(save_dir, 'args.pkl'), 'wb') as f:
         pickle.dump(args, f)
 
-    # GPU mode: sequential run to avoid multiple CUDA jobs at once
     if args.use_cuda and args.n_exp > 1:
         logger.info("GPU mode detected: running experiments sequentially to avoid launching multiple CUDA jobs at once.")
 
@@ -431,12 +514,21 @@ if __name__ == '__main__':
         out = run_experiment(args, save_dir)
 
     # save metrics
-    if args.n_exp > 1:
-        for key, value in out[0].items():
-            for metric_key in list(value.keys()):
-                metric_value = [o[key][metric_key] for o in out]
-                np.save(os.path.join(save_dir, f'{key}_{metric_key}.npy'), metric_value)
+    if isinstance(out, list):
+        if len(out) == 1:
+            # single experiment wrapped as a list
+            single_out = out[0]
+            for key, value in single_out.items():
+                for metric_key, metric_value in value.items():
+                    np.save(os.path.join(save_dir, f'{key}_{metric_key}.npy'), metric_value)
+        else:
+            # multiple experiments
+            for key, value in out[0].items():
+                for metric_key in list(value.keys()):
+                    metric_value = [o[key][metric_key] for o in out]
+                    np.save(os.path.join(save_dir, f'{key}_{metric_key}.npy'), metric_value)
     else:
+        # single experiment returned directly as dict
         for key, value in out.items():
             for metric_key, metric_value in value.items():
                 np.save(os.path.join(save_dir, f'{key}_{metric_key}.npy'), metric_value)
