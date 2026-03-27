@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/logs/minigrid/MT/MT3/hh_multihead_MT3_3e_3seeds" />
+      <excludeFolder url="file://$MODULE_DIR$/logs/minigrid/MT/MT3/moore_hh_multihead_stress_MT3_6e_3seeds" />
+      <excludeFolder url="file://$MODULE_DIR$/logs/minigrid/MT/MT7" />
+    </content>
     <orderEntry type="jdk" jdkName="Python 3.8 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

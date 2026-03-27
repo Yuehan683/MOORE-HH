@@ -1,18 +1,25 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
 import numpy as np
 
 import moore.utils.mixture_layers as mixture_layers
 
 
 class MiniGridPPONetwork(nn.Module):
-    def __init__(self, input_shape, output_shape, n_features, **kwargs):
+    def __init__(self, input_shape,
+                 output_shape,
+                 n_features,
+                 **kwargs):
+
         super().__init__()
+
         self._n_input = input_shape
         self._n_output = output_shape[0]
 
         n_input_channels = self._n_input[-1]
+
         self.cnn = nn.Sequential(
             nn.Conv2d(n_input_channels, 16, (2, 2)),
             nn.ReLU(),
@@ -27,11 +34,14 @@ class MiniGridPPONetwork(nn.Module):
             n_flatten = self.cnn(torch.zeros((1, 3, 7, 7)).float()).shape[1]
 
         input_size = n_flatten
+
         self._output_head = nn.Sequential()
+
         if len(n_features) > 0:
             self._output_head.append(nn.Linear(input_size, n_features[0]))
             self._output_head.append(nn.Tanh())
             input_size = n_features[0]
+
         self._output_head.append(nn.Linear(input_size, self._n_output))
 
     def forward(self, state):
@@ -40,14 +50,23 @@ class MiniGridPPONetwork(nn.Module):
 
 
 class MiniGridPPOSHNetwork(nn.Module):
-    def __init__(self, input_shape, output_shape, n_features, n_contexts=1, use_cuda=False, **kwargs):
+    def __init__(self, input_shape,
+                 output_shape,
+                 n_features,
+                 n_contexts=1,
+                 use_cuda=False,
+                 **kwargs):
+
         super().__init__()
+
         self._n_input = input_shape
         self._n_output = output_shape[0]
+
         self._n_contexts = n_contexts
         self._use_cuda = use_cuda
 
         n_input_channels = self._n_input[-1]
+
         self.cnn = nn.Sequential(
             nn.Conv2d(n_input_channels, 16, (2, 2)),
             nn.ReLU(),
@@ -62,37 +81,53 @@ class MiniGridPPOSHNetwork(nn.Module):
             n_flatten = self.cnn(torch.zeros((1, 3, 7, 7)).float()).shape[1]
 
         input_size = n_flatten + n_contexts
+
         self._output_head = nn.Sequential()
+
         if len(n_features) > 0:
             self._output_head.append(nn.Linear(input_size, n_features[0]))
             self._output_head.append(nn.Tanh())
             input_size = n_features[0]
+
         self._output_head.append(nn.Linear(input_size, self._n_output))
 
     def forward(self, state, c=None):
+
         if isinstance(c, int):
             c = torch.tensor([c])
+
         if isinstance(c, np.ndarray):
             c = torch.from_numpy(c)
 
         c = F.one_hot(c, num_classes=self._n_contexts)
+
         if self._use_cuda:
             c = c.cuda()
 
         features_cnn = self.cnn(state.float())
         f = self._output_head(torch.cat((features_cnn, c.float()), dim=1))
+
         return f
 
 
 class MiniGridPPOMHNetwork(nn.Module):
-    def __init__(self, input_shape, output_shape, n_features, n_contexts=1, use_cuda=False, **kwargs):
+    def __init__(self, input_shape,
+                 output_shape,
+                 n_features,
+                 n_contexts=1,
+                 use_cuda=False,
+                 **kwargs):
+
         super().__init__()
+
         self._n_input = input_shape
         self._n_output = output_shape[0]
+
         self._n_contexts = n_contexts
         self._use_cuda = use_cuda
 
         n_input_channels = self._n_input[-1]
+
         self.cnn = nn.Sequential(
             nn.Conv2d(n_input_channels, 16, (2, 2)),
             nn.ReLU(),
@@ -107,26 +142,34 @@ class MiniGridPPOMHNetwork(nn.Module):
             n_flatten = self.cnn(torch.zeros((1, 3, 7, 7)).float()).shape[1]
 
         self._output_heads = nn.ModuleList([])
+
         for _ in range(self._n_contexts):
             input_size = n_flatten
             head = nn.Sequential()
+
             if len(n_features) > 0:
                 head.append(nn.Linear(input_size, n_features[0]))
                 head.append(nn.Tanh())
                 input_size = n_features[0]
+
             head.append(nn.Linear(input_size, self._n_output))
             self._output_heads.append(head)
 
     def forward(self, state, c=None):
+
         if isinstance(c, int):
             c = torch.tensor([c])
+
         if isinstance(c, np.ndarray):
             c = torch.from_numpy(c)
+
         if self._use_cuda:
             c = c.cuda()
 
         features_cnn = self.cnn(state.float())
+
         f = torch.zeros(size=(state.shape[0], self._n_output))
+
         if self._use_cuda:
             f = f.cuda()
 
@@ -139,28 +182,29 @@ class MiniGridPPOMHNetwork(nn.Module):
 
 
 class MiniGridPPOMixtureMHNetwork(nn.Module):
-    def __init__(
-        self,
-        input_shape,
-        output_shape,
-        n_features,
-        n_contexts=1,
-        n_experts=4,
-        orthogonal=True,
-        hh_canon_sign=True,
-        hh_rank_tol=1e-6,
-        use_cuda=False,
-        task_encoder_bias=False,
-        **kwargs
-    ):
+    def __init__(self, input_shape,
+                 output_shape,
+                 n_features,
+                 n_contexts=1,
+                 n_experts=4,
+                 orthogonal=True,
+                 hh_canon_sign=True,
+                 hh_rank_tol=1e-6,
+                 use_cuda=False,
+                 task_encoder_bias=False,
+                 **kwargs):
+
         super().__init__()
+
         self._n_input = input_shape
         self._n_output = output_shape[0]
+
         self._n_contexts = n_contexts
         self._orthogonal = orthogonal
         self._use_cuda = use_cuda
 
         n_input_channels = self._n_input[-1]
+
         self._task_encoder = nn.Linear(n_contexts, n_experts, bias=task_encoder_bias)
 
         cnn = nn.Sequential(
@@ -193,34 +237,43 @@ class MiniGridPPOMixtureMHNetwork(nn.Module):
             )
 
         self._output_heads = nn.ModuleList([])
+
         for _ in range(self._n_contexts):
             input_size = n_flatten
             head = nn.Sequential()
+
             if len(n_features) > 0:
                 head.append(nn.Linear(input_size, n_features[0]))
                 head.append(nn.Tanh())
                 input_size = n_features[0]
+
             head.append(nn.Linear(input_size, self._n_output))
             self._output_heads.append(head)
 
     def forward(self, state, c=None):
+
         if isinstance(c, int):
             c = torch.tensor([c])
+
         if isinstance(c, np.ndarray):
             c = torch.from_numpy(c)
+
         if self._use_cuda:
             c = c.cuda()
 
         c_onehot = F.one_hot(c, num_classes=self._n_contexts)
+
         w = self._task_encoder(c_onehot.float()).unsqueeze(1)   # [B, 1, K]
 
         features_cnn = self.cnn(state.float())                  # [K, B, D]
         features_cnn = torch.permute(features_cnn, (1, 0, 2))  # [B, K, D]
+
         features_cnn = w @ features_cnn                         # [B, 1, D]
         features_cnn = features_cnn.squeeze(1)                 # [B, D]
         features_cnn = torch.tanh(features_cnn)
 
         f = torch.zeros(size=(state.shape[0], self._n_output))
+
         if self._use_cuda:
             f = f.cuda()
 
@@ -240,22 +293,6 @@ class MiniGridPPOMixtureMHNetwork(nn.Module):
             return self.orth_layer.last_stats
         return {}
 
-    def get_task_encoder_stats(self):
-        stats = {}
-        if hasattr(self, "_task_encoder") and self._task_encoder is not None:
-            with torch.no_grad():
-                w = self._task_encoder.weight.detach()
-                stats["task_encoder/weight_norm"] = float(w.norm().item())
-                stats["task_encoder/weight_abs_mean"] = float(w.abs().mean().item())
-                stats["task_encoder/weight_abs_max"] = float(w.abs().max().item())
-
-                if self._task_encoder.bias is not None:
-                    b = self._task_encoder.bias.detach()
-                    stats["task_encoder/bias_norm"] = float(b.norm().item())
-                    stats["task_encoder/bias_abs_mean"] = float(b.abs().mean().item())
-                    stats["task_encoder/bias_abs_max"] = float(b.abs().max().item())
-        return stats
-
     def save_shared_backbone(self, save_dir):
         torch.save(self.cnn.state_dict(), save_dir)
 
@@ -269,21 +306,20 @@ class MiniGridPPOMixtureMHNetwork(nn.Module):
 
 
 class MiniGridPPOMixtureSHNetwork(nn.Module):
-    def __init__(
-        self,
-        input_shape,
-        output_shape,
-        n_features,
-        n_contexts=1,
-        n_experts=4,
-        orthogonal=True,
-        hh_canon_sign=True,
-        hh_rank_tol=1e-6,
-        use_cuda=False,
-        task_encoder_bias=False,
-        **kwargs
-    ):
+    def __init__(self, input_shape,
+                 output_shape,
+                 n_features,
+                 n_contexts=1,
+                 n_experts=4,
+                 orthogonal=True,
+                 hh_canon_sign=True,
+                 hh_rank_tol=1e-6,
+                 use_cuda=False,
+                 task_encoder_bias=False,
+                 **kwargs):
+
         super().__init__()
+
         self._n_input = input_shape
         self._n_output = output_shape[0]
         self._n_contexts = n_contexts
@@ -291,6 +327,7 @@ class MiniGridPPOMixtureSHNetwork(nn.Module):
         self._use_cuda = use_cuda
 
         n_input_channels = self._n_input[-1]
+
         self._task_encoder = nn.Linear(n_contexts, n_experts, bias=task_encoder_bias)
 
         cnn = nn.Sequential(
@@ -323,28 +360,36 @@ class MiniGridPPOMixtureSHNetwork(nn.Module):
             )
 
         input_size = n_flatten + n_contexts
+
         self._output_head = nn.Sequential()
+
         if len(n_features) > 0:
             self._output_head.append(nn.Linear(input_size, n_features[0]))
             self._output_head.append(nn.Tanh())
             input_size = n_features[0]
+
         self._output_head.append(nn.Linear(input_size, self._n_output))
 
     def forward(self, state, c=None):
+
         if isinstance(c, int):
             c = torch.tensor([c])
+
         if isinstance(c, np.ndarray):
             c = torch.from_numpy(c)
 
         c = F.one_hot(c, num_classes=self._n_contexts)
+
         if self._use_cuda:
             c = c.cuda()
 
-        w = self._task_encoder(c.float()).unsqueeze(1)          # [B, 1, K]
-        features_cnn = self.cnn(state.float())                  # [K, B, D]
-        features_cnn = torch.permute(features_cnn, (1, 0, 2))  # [B, K, D]
-        features_cnn = w @ features_cnn                         # [B, 1, D]
-        features_cnn = features_cnn.squeeze(1)                 # [B, D]
+        w = self._task_encoder(c.float()).unsqueeze(1)         # [B, 1, K]
+
+        features_cnn = self.cnn(state.float())                 # [K, B, D]
+        features_cnn = torch.permute(features_cnn, (1, 0, 2)) # [B, K, D]
+
+        features_cnn = w @ features_cnn                        # [B, 1, D]
+        features_cnn = features_cnn.squeeze(1)                # [B, D]
         features_cnn = torch.tanh(features_cnn)
 
         f = self._output_head(torch.cat((features_cnn, c.float()), dim=1))
@@ -354,22 +399,6 @@ class MiniGridPPOMixtureSHNetwork(nn.Module):
         if self.orth_layer is not None and hasattr(self.orth_layer, "last_stats"):
             return self.orth_layer.last_stats
         return {}
-
-    def get_task_encoder_stats(self):
-        stats = {}
-        if hasattr(self, "_task_encoder") and self._task_encoder is not None:
-            with torch.no_grad():
-                w = self._task_encoder.weight.detach()
-                stats["task_encoder/weight_norm"] = float(w.norm().item())
-                stats["task_encoder/weight_abs_mean"] = float(w.abs().mean().item())
-                stats["task_encoder/weight_abs_max"] = float(w.abs().max().item())
-
-                if self._task_encoder.bias is not None:
-                    b = self._task_encoder.bias.detach()
-                    stats["task_encoder/bias_norm"] = float(b.norm().item())
-                    stats["task_encoder/bias_abs_mean"] = float(b.abs().mean().item())
-                    stats["task_encoder/bias_abs_max"] = float(b.abs().max().item())
-        return stats
 
     def save_shared_backbone(self, save_dir):
         torch.save(self.cnn.state_dict(), save_dir)

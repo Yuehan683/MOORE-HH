@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd ../../../
+
+ENV_NAME=$1
+N_EXPERTS=$2
+
+python run_minigrid_ppo_mt.py --use_cuda --n_exp 3 --seed 0 1 2 \
+                            --env_name ${ENV_NAME} --exp_name hh_ppo_mt_moore_multihead_${N_EXPERTS}e \
+                            --n_epochs 100 --n_steps 2000  --n_episodes_test 16 --train_frequency 2000 --lr_actor 1e-3 --lr_critic 1e-3 \
+                            --critic_network MiniGridPPOMixtureMHNetwork --critic_n_features 128 --orthogonal --n_experts ${N_EXPERTS} \
+                            --actor_network MiniGridPPOMixtureMHNetwork --actor_n_features 128 \
+                            --hh_canon_sign --hh_rank_tol 1e-6 \
+                            --batch_size 256 --gamma 0.99

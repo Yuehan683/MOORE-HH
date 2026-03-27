@@ -66,21 +66,6 @@ def get_grad_global_norm(module):
     return total_sq ** 0.5
 
 
-def get_module_grad_norm(module):
-    total_sq = 0.0
-    has_grad = False
-    if module is None:
-        return 0.0
-
-    for p in module.parameters():
-        if p.grad is not None:
-            g = p.grad.detach()
-            total_sq += g.norm(2).item() ** 2
-            has_grad = True
-
-    return (total_sq ** 0.5) if has_grad else 0.0
-
-
 def count_nan_inf_in_module(module):
     count = 0
     for p in module.parameters():
@@ -102,85 +87,8 @@ def get_network_orth_stats(network, prefix=""):
         if raw_stats is None:
             raw_stats = {}
         for k, v in raw_stats.items():
-            stats[f"{prefix}{k}"] = float(v)
+            stats[f"{prefix}{k}"] = v
     return stats
-
-
-def get_network_task_encoder_stats(network, prefix=""):
-    """
-    直接从 network._task_encoder 读取参数统计
-    这样你不用再额外修改 networks_ppo.py 也能拿到统计量
-    """
-    stats = {}
-
-    task_encoder = getattr(network, "_task_encoder", None)
-    if task_encoder is None:
-        return stats
-
-    with torch.no_grad():
-        w = task_encoder.weight.detach()
-        stats[f"{prefix}task_encoder/weight_norm"] = float(w.norm().item())
-        stats[f"{prefix}task_encoder/weight_abs_mean"] = float(w.abs().mean().item())
-        stats[f"{prefix}task_encoder/weight_abs_max"] = float(w.abs().max().item())
-
-        if task_encoder.bias is not None:
-            b = task_encoder.bias.detach()
-            stats[f"{prefix}task_encoder/bias_norm"] = float(b.norm().item())
-            stats[f"{prefix}task_encoder/bias_abs_mean"] = float(b.abs().mean().item())
-            stats[f"{prefix}task_encoder/bias_abs_max"] = float(b.abs().max().item())
-
-    return stats
-
-
-def append_diag(metrics, diag):
-    if "diagnostics" not in metrics:
-        metrics["diagnostics"] = {}
-
-    def _append(name, value):
-        if name not in metrics["diagnostics"]:
-            metrics["diagnostics"][name] = []
-        metrics["diagnostics"][name].append(float(value))
-
-    _append("actor_orth_err_fro_mean", diag.get("actor/orth/err_fro_mean", float("nan")))
-    _append("actor_orth_err_fro_p95", diag.get("actor/orth/err_fro_p95", float("nan")))
-    _append("actor_orth_err_fro_max", diag.get("actor/orth/err_fro_max", float("nan")))
-    _append("actor_hh_min_abs_diagR", diag.get("actor/hh/min_abs_diagR", float("nan")))
-    _append("actor_hh_max_abs_diagR", diag.get("actor/hh/max_abs_diagR", float("nan")))
-    _append("actor_hh_diagR_ratio", diag.get("actor/hh/diagR_ratio", float("nan")))
-    _append("actor_hh_rank_fail_rate", diag.get("actor/hh/rank_fail_rate", float("nan")))
-    _append("actor_hh_canon_sign", diag.get("actor/hh/canon_sign", float("nan")))
-
-    _append("critic_orth_err_fro_mean", diag.get("critic/orth/err_fro_mean", float("nan")))
-    _append("critic_orth_err_fro_p95", diag.get("critic/orth/err_fro_p95", float("nan")))
-    _append("critic_orth_err_fro_max", diag.get("critic/orth/err_fro_max", float("nan")))
-    _append("critic_hh_min_abs_diagR", diag.get("critic/hh/min_abs_diagR", float("nan")))
-    _append("critic_hh_max_abs_diagR", diag.get("critic/hh/max_abs_diagR", float("nan")))
-    _append("critic_hh_diagR_ratio", diag.get("critic/hh/diagR_ratio", float("nan")))
-    _append("critic_hh_rank_fail_rate", diag.get("critic/hh/rank_fail_rate", float("nan")))
-    _append("critic_hh_canon_sign", diag.get("critic/hh/canon_sign", float("nan")))
-
-    _append("grad_actor_global_norm", diag.get("grad/actor_global_norm", float("nan")))
-    _append("grad_critic_global_norm", diag.get("grad/critic_global_norm", float("nan")))
-    _append("grad_actor_task_encoder_norm", diag.get("grad/actor_task_encoder_norm", float("nan")))
-    _append("grad_critic_task_encoder_norm", diag.get("grad/critic_task_encoder_norm", float("nan")))
-
-    _append("actor_task_encoder_weight_norm", diag.get("actor/task_encoder/weight_norm", float("nan")))
-    _append("actor_task_encoder_weight_abs_mean", diag.get("actor/task_encoder/weight_abs_mean", float("nan")))
-    _append("actor_task_encoder_weight_abs_max", diag.get("actor/task_encoder/weight_abs_max", float("nan")))
-    _append("actor_task_encoder_bias_norm", diag.get("actor/task_encoder/bias_norm", float("nan")))
-    _append("actor_task_encoder_bias_abs_mean", diag.get("actor/task_encoder/bias_abs_mean", float("nan")))
-    _append("actor_task_encoder_bias_abs_max", diag.get("actor/task_encoder/bias_abs_max", float("nan")))
-
-    _append("critic_task_encoder_weight_norm", diag.get("critic/task_encoder/weight_norm", float("nan")))
-    _append("critic_task_encoder_weight_abs_mean", diag.get("critic/task_encoder/weight_abs_mean", float("nan")))
-    _append("critic_task_encoder_weight_abs_max", diag.get("critic/task_encoder/weight_abs_max", float("nan")))
-    _append("critic_task_encoder_bias_norm", diag.get("critic/task_encoder/bias_norm", float("nan")))
-    _append("critic_task_encoder_bias_abs_mean", diag.get("critic/task_encoder/bias_abs_mean", float("nan")))
-    _append("critic_task_encoder_bias_abs_max", diag.get("critic/task_encoder/bias_abs_max", float("nan")))
-
-    _append("num_nan_inf_count_actor", diag.get("num/nan_inf_count_actor", float("nan")))
-    _append("num_nan_inf_count_critic", diag.get("num/nan_inf_count_critic", float("nan")))
-    _append("num_nan_inf_count_total", diag.get("num/nan_inf_count_total", float("nan")))
 
 
 def run_experiment(args, save_dir, exp_id=0, seed=None):
@@ -348,49 +256,6 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         }
     })
 
-    metrics["diagnostics"] = {
-        "actor_orth_err_fro_mean": [],
-        "actor_orth_err_fro_p95": [],
-        "actor_orth_err_fro_max": [],
-        "actor_hh_min_abs_diagR": [],
-        "actor_hh_max_abs_diagR": [],
-        "actor_hh_diagR_ratio": [],
-        "actor_hh_rank_fail_rate": [],
-        "actor_hh_canon_sign": [],
-
-        "critic_orth_err_fro_mean": [],
-        "critic_orth_err_fro_p95": [],
-        "critic_orth_err_fro_max": [],
-        "critic_hh_min_abs_diagR": [],
-        "critic_hh_max_abs_diagR": [],
-        "critic_hh_diagR_ratio": [],
-        "critic_hh_rank_fail_rate": [],
-        "critic_hh_canon_sign": [],
-
-        "grad_actor_global_norm": [],
-        "grad_critic_global_norm": [],
-        "grad_actor_task_encoder_norm": [],
-        "grad_critic_task_encoder_norm": [],
-
-        "actor_task_encoder_weight_norm": [],
-        "actor_task_encoder_weight_abs_mean": [],
-        "actor_task_encoder_weight_abs_max": [],
-        "actor_task_encoder_bias_norm": [],
-        "actor_task_encoder_bias_abs_mean": [],
-        "actor_task_encoder_bias_abs_max": [],
-
-        "critic_task_encoder_weight_norm": [],
-        "critic_task_encoder_weight_abs_mean": [],
-        "critic_task_encoder_weight_abs_max": [],
-        "critic_task_encoder_bias_norm": [],
-        "critic_task_encoder_bias_abs_mean": [],
-        "critic_task_encoder_bias_abs_max": [],
-
-        "num_nan_inf_count_actor": [],
-        "num_nan_inf_count_critic": [],
-        "num_nan_inf_count_total": [],
-    }
-
     current_all_average_return = 0.0
     current_all_average_discounted_return = 0.0
 
@@ -446,37 +311,12 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
     initial_diag = {}
     initial_diag.update(get_network_orth_stats(actor_net, prefix="actor/"))
     initial_diag.update(get_network_orth_stats(critic_net, prefix="critic/"))
-    initial_diag.update(get_network_task_encoder_stats(actor_net, prefix="actor/"))
-    initial_diag.update(get_network_task_encoder_stats(critic_net, prefix="critic/"))
-
     initial_diag["grad/actor_global_norm"] = get_grad_global_norm(actor_net)
     initial_diag["grad/critic_global_norm"] = get_grad_global_norm(critic_net)
-
-    actor_te = getattr(actor_net, "_task_encoder", None)
-    critic_te = getattr(critic_net, "_task_encoder", None)
-    initial_diag["grad/actor_task_encoder_norm"] = get_module_grad_norm(actor_te)
-    initial_diag["grad/critic_task_encoder_norm"] = get_module_grad_norm(critic_te)
-
     initial_diag["num/nan_inf_count_actor"] = count_nan_inf_in_module(actor_net)
     initial_diag["num/nan_inf_count_critic"] = count_nan_inf_in_module(critic_net)
     initial_diag["num/nan_inf_count_total"] = (
         initial_diag["num/nan_inf_count_actor"] + initial_diag["num/nan_inf_count_critic"]
-    )
-
-    append_diag(metrics, initial_diag)
-
-    single_logger.info(
-        "[InitDiag] "
-        f"ActorOrthErrMean={initial_diag.get('actor/orth/err_fro_mean', 0.0):.6e}, "
-        f"ActorOrthErrP95={initial_diag.get('actor/orth/err_fro_p95', 0.0):.6e}, "
-        f"ActorMinDiagR={initial_diag.get('actor/hh/min_abs_diagR', 0.0):.6e}, "
-        f"ActorDiagRRatio={initial_diag.get('actor/hh/diagR_ratio', 0.0):.6e}, "
-        f"CriticOrthErrMean={initial_diag.get('critic/orth/err_fro_mean', 0.0):.6e}, "
-        f"CriticOrthErrP95={initial_diag.get('critic/orth/err_fro_p95', 0.0):.6e}, "
-        f"CriticMinDiagR={initial_diag.get('critic/hh/min_abs_diagR', 0.0):.6e}, "
-        f"CriticDiagRRatio={initial_diag.get('critic/hh/diagR_ratio', 0.0):.6e}, "
-        f"ActorTaskEncNorm={initial_diag.get('actor/task_encoder/weight_norm', 0.0):.6e}, "
-        f"CriticTaskEncNorm={initial_diag.get('critic/task_encoder/weight_norm', 0.0):.6e}"
     )
 
     if args.wandb:
@@ -551,56 +391,33 @@ def run_experiment(args, save_dir, exp_id=0, seed=None):
         diag = {}
         diag.update(get_network_orth_stats(actor_net, prefix="actor/"))
         diag.update(get_network_orth_stats(critic_net, prefix="critic/"))
-        diag.update(get_network_task_encoder_stats(actor_net, prefix="actor/"))
-        diag.update(get_network_task_encoder_stats(critic_net, prefix="critic/"))
-
         diag["grad/actor_global_norm"] = get_grad_global_norm(actor_net)
         diag["grad/critic_global_norm"] = get_grad_global_norm(critic_net)
-
-        actor_te = getattr(actor_net, "_task_encoder", None)
-        critic_te = getattr(critic_net, "_task_encoder", None)
-        diag["grad/actor_task_encoder_norm"] = get_module_grad_norm(actor_te)
-        diag["grad/critic_task_encoder_norm"] = get_module_grad_norm(critic_te)
-
         diag["num/nan_inf_count_actor"] = count_nan_inf_in_module(actor_net)
         diag["num/nan_inf_count_critic"] = count_nan_inf_in_module(critic_net)
         diag["num/nan_inf_count_total"] = (
             diag["num/nan_inf_count_actor"] + diag["num/nan_inf_count_critic"]
         )
 
-        append_diag(metrics, diag)
-
         single_logger.info(
             f"[Epoch {n + 1}] "
             f"ActorGrad={diag['grad/actor_global_norm']:.6f}, "
             f"CriticGrad={diag['grad/critic_global_norm']:.6f}, "
-            f"ActorTaskEncGrad={diag['grad/actor_task_encoder_norm']:.6f}, "
-            f"CriticTaskEncGrad={diag['grad/critic_task_encoder_norm']:.6f}, "
             f"NaNInfTotal={diag['num/nan_inf_count_total']}"
         )
 
         if "actor/orth/err_fro_mean" in diag:
             single_logger.info(
                 f"[Epoch {n + 1}] "
-                f"ActorOrthErrMean={diag.get('actor/orth/err_fro_mean', 0.0):.6e}, "
-                f"ActorOrthErrP95={diag.get('actor/orth/err_fro_p95', 0.0):.6e}, "
-                f"ActorOrthErrMax={diag.get('actor/orth/err_fro_max', 0.0):.6e}, "
-                f"ActorMinDiagR={diag.get('actor/hh/min_abs_diagR', 0.0):.6e}, "
-                f"ActorMaxDiagR={diag.get('actor/hh/max_abs_diagR', 0.0):.6e}, "
-                f"ActorDiagRRatio={diag.get('actor/hh/diagR_ratio', 0.0):.6e}, "
-                f"ActorRankFail={diag.get('actor/hh/rank_fail_rate', 0.0):.6f}"
+                f"ActorOrthErrMean={diag['actor/orth/err_fro_mean']:.6e}, "
+                f"ActorOrthErrP95={diag.get('actor/orth/err_fro_p95', 0.0):.6e}"
             )
 
         if "critic/orth/err_fro_mean" in diag:
             single_logger.info(
                 f"[Epoch {n + 1}] "
-                f"CriticOrthErrMean={diag.get('critic/orth/err_fro_mean', 0.0):.6e}, "
-                f"CriticOrthErrP95={diag.get('critic/orth/err_fro_p95', 0.0):.6e}, "
-                f"CriticOrthErrMax={diag.get('critic/orth/err_fro_max', 0.0):.6e}, "
-                f"CriticMinDiagR={diag.get('critic/hh/min_abs_diagR', 0.0):.6e}, "
-                f"CriticMaxDiagR={diag.get('critic/hh/max_abs_diagR', 0.0):.6e}, "
-                f"CriticDiagRRatio={diag.get('critic/hh/diagR_ratio', 0.0):.6e}, "
-                f"CriticRankFail={diag.get('critic/hh/rank_fail_rate', 0.0):.6f}"
+                f"CriticOrthErrMean={diag['critic/orth/err_fro_mean']:.6e}, "
+                f"CriticOrthErrP95={diag.get('critic/orth/err_fro_p95', 0.0):.6e}"
             )
 
         if args.wandb:
