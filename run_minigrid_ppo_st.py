@@ -6,7 +6,9 @@ from mushroom_rl.policy import BoltzmannTorchPolicy
 from mushroom_rl.approximators.parametric.torch_approximator import *
 from mushroom_rl.utils.parameters import Parameter
 # deeplearning
+import torch
 import torch.optim as optim
+import numpy as np
 import torch.nn.functional as F
 # continual proto-value functions 
 from moore.environments import MiniGrid
@@ -80,7 +82,8 @@ def run_experiment(args, save_dir, exp_id = 0, seed = None):
                         n_features=critic_n_features,
                         batch_size=batch_size,
                         input_shape = mdp.info.observation_space.shape,
-                        output_shape=(1,))
+                        output_shape=(1,),
+                        use_cuda=args.use_cuda)
     
     # alg
     eps = 0.2
@@ -112,6 +115,9 @@ def run_experiment(args, save_dir, exp_id = 0, seed = None):
 
     single_logger.info(agent._V.model.network)
     single_logger.info(agent.policy._logits.model.network)
+    single_logger.info(f"Policy use_cuda: {agent.policy.use_cuda}")
+    single_logger.info(f"Actor device: {next(agent.policy._logits.model.network.parameters()).device}")
+    single_logger.info(f"Critic device: {next(agent._V.model.network.parameters()).device}")
     
     os.makedirs(save_dir, exist_ok=True)
 
@@ -201,18 +207,27 @@ if __name__ == '__main__':
     logger.info('Experiment Environment: ' + args.env_name)
     logger.info('Experiment Type: ' + "Baseline")
     logger.info("Experiment Name: " + args.exp_name)
+    logger.info(f"Requested CUDA: {args.use_cuda}")
+    logger.info(f"torch.cuda.is_available(): {torch.cuda.is_available()}")
+    if args.use_cuda and not torch.cuda.is_available():
+        raise RuntimeError("--use_cuda was specified, but torch.cuda.is_available() is False.")
 
     save_dir = logger.path
 
     with open(os.path.join(save_dir, 'args.pkl'), 'wb') as f:
         pickle.dump(args, f)
 
-    if args.seed is not None:
+    if args.use_cuda and args.n_exp > 1:
+        logger.info("GPU mode detected: running experiments sequentially to avoid launching multiple CUDA jobs at once.")
+        if args.seed is not None:
+            out = [run_experiment(args, save_dir, i, s) for i, s in zip(range(args.n_exp), args.seed)]
+        else:
+            out = [run_experiment(args, save_dir, i) for i in range(args.n_exp)]
+    elif args.seed is not None:
         out = Parallel(n_jobs=-1)(delayed(run_experiment)(args, save_dir, i, s)
                               for i, s in zip(range(args.n_exp), args.seed))
     elif args.n_exp > 1:
-        out = Parallel(n_jobs=-1)(delayed(run_experiment)(args, save_dir, i)
-                              for i in range(args.n_exp))
+        out = [run_experiment(args, save_dir, i) for i in range(args.n_exp)]
     else:
         out = run_experiment(args, save_dir)
     
