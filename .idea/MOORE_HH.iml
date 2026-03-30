@@ -5,6 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/logs/minigrid/MT/MT3/hh_multihead_MT3_3e_3seeds" />
       <excludeFolder url="file://$MODULE_DIR$/logs/minigrid/MT/MT3/moore_hh_multihead_stress_MT3_6e_3seeds" />
       <excludeFolder url="file://$MODULE_DIR$/logs/minigrid/MT/MT7" />
+      <excludeFolder url="file://$MODULE_DIR$/logs/minigrid/MT/MT5" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
